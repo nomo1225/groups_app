@@ -1,0 +1,36 @@
+<%= render 'mygroups/header' %>
+
+<div class="row">
+  <aside class="col-sm-3">
+    <%= render 'mygroups/leftside' %>
+  </aside>
+  
+  <aside class="col-sm-9 mt-3">
+    <div class="card">
+        <div class="card-header c-height">
+          <h4 class="card-title text-center">メンバー一覧</h4>
+        </div>
+        
+          <table class="table" style="table-layout:fixed">
+            <thead>
+              <tr class="text-center">
+                <th style="width:10%"></th>
+                <th style="width:20%">メンバー</th>
+                <th style="width:20%">加入日</th>
+              </tr>
+            </thead>
+            <% @members.each do |member| %>
+            <tbody>
+              <tr class="text-center">
+                <td><img class="rounded img-fluid" src="<%= member.image.url %>" alt="" width="50" height="50"></td>
+                <td><%= member.name %></td>
+                <td><%= member.join(@mygroup).created_at.strftime("%Y-%m-%d") %></td>
+              </tr>
+            </tbody>
+            <% end %>
+            <%= paginate @members %>
+          </table>
+
+    </div>
+  </aside>
+</div>

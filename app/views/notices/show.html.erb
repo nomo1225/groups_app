@@ -1,0 +1,46 @@
+<div class="text-center">
+  <h1>お知らせ詳細</h1>
+</div>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div class="text-center">投稿日時</div>
+      </th>
+      <td><%= @notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">投稿者</div>
+      </th>
+      <td><%= @notice.user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">タイトル</div>
+      </th>
+      <td><%= @notice.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">内容</div>
+      </th>
+      <td><%= @notice.content %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex flex-column mt-2">
+  <% if @notice.user_id == current_user.id %>
+    <button type="button" class="btn btn-outline-info mx-auto  btn-sm mb-1">
+      <%= link_to '編集する', edit_notice_url(mygroup_id: @notice.mygroup.id)%>
+    </button>
+    <button type="button" class="btn btn-outline-danger mx-auto  btn-sm mb-1">
+      <%= link_to '削除する', @notice, method: :delete, data: { confirm: '本当に削除しますか？' }%>
+    </button>
+  <% end %>
+  <button type="button" class="btn btn-outline-secondary mx-auto  btn-sm">
+    <%= link_to 'グループトップに戻る', mygroup_path(@notice.mygroup_id) %>
+  </button>
+</div>

@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-lg">
+    <ul class="nav nav-tabs nav-justified navcolor" style="height:35px;">
+      <li class="nav-item"><a href="<%= mygroup_path(@mygroup) %>" class="nav-link<%= 'active' if current_page?(mygroup_path(@mygroup)) %>">グループトップ </a></li>
+      <li class="nav-item"><a href="/mygroups/<%= @mygroup.id %>/members" class="nav-link<%= 'active' if current_page?("/mygroups/#{@mygroup.id}/members") %>">メンバー一覧</a></li>
+      <li class="nav-item"><a href="/mygroups/<%= @mygroup.id %>/plans" class="nav-link<%= 'active' if current_page?("/mygroups/#{@mygroup.id}/plans") %>">予定</a></li>
+    </ul>
+  </div>
+</div>

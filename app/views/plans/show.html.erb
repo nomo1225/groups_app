@@ -1,0 +1,42 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div class="text-center">予定日時</div>
+      </th>
+      <td><%= @plan.start_time.strftime("%Y-%m-%d") %> / <%= @plan.plan_at.strftime("%H:%M") %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">登録者</div>
+      </th>
+      <td><%= User.find(@plan.user_id).name %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">タイトル</div>
+      </th>
+      <td><%= @plan.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">内容</div>
+      </th>
+      <td><%= @plan.content %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex flex-column mt-2">
+  <% if @plan.user_id == current_user.id %>
+    <button type="button" class="btn btn-outline-info mx-auto  btn-sm mb-1">
+      <%= link_to '編集する', edit_plan_url(mygroup_id: @plan.mygroup.id) %>
+    </button>
+    <button type="button" class="btn btn-outline-danger mx-auto  btn-sm mb-1">
+      <%= link_to '削除する', @plan, method: :delete, data: { confirm: '本当に削除しますか？' }%>
+    </button>
+  <% end %>
+  <button type="button" class="btn btn-outline-secondary mx-auto  btn-sm">
+    <%= link_to '予定一覧に戻る', "/mygroups/#{@plan.mygroup_id}/plans" %>
+  </button>
+</div>

@@ -1,0 +1,80 @@
+<%= render 'mygroups/header' %>
+
+<div class="row">
+  <aside class="col-sm-3">
+    
+    <%= render 'mygroups/leftside' %>
+    
+    <div class="d-flex flex-column mt-2">
+      <%= link_to '新規お知らせ登録', new_notice_path(mygroup: @mygroup.id),class: "btn btn-primary mt-2" %>
+      <% unless current_user.id == @mygroup.user_id %>
+        <%= link_to '退会する', relationship_path(mygroup_id: @mygroup.id), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-sm btn-outline-danger btn-block w-50 mx-auto mt-2' %>
+      <% end %>
+    </div>
+    <div class="card bg-light mt-3 text-center">
+      <div class="card-header"><%= @mygroup.area %>のお天気</div>
+      <div class="card-body">
+        <div class="row">
+        <div class="col-5">
+        <% weather = @weather_main %>
+        <% if weather == 'clear sky' %>
+          <img src="/weather/clear sky.png" width="50px" height="50px"><br><%= '快晴' %>
+        <% elsif weather == 'few clouds' %>
+          <img src="/weather/few clouds.png" width="50px" height="50px"><br><%= '晴れ' %>
+        <% elsif weather == 'broken clouds' %>
+          <img src="/weather/brokenclouds.png" width="50px" height="50px"><br><%= 'くもり' %>
+        <% elsif weather == 'scattered clouds' %>
+          <img src="/weather/scattered clouds.png" width="50px" height="50px"><br><%= 'くもり' %>
+        <% elsif weather == 'shower rain' %>
+          <img src="/weather/shower rain.png" width="50px" height="50px"><br><%= '小雨' %>
+        <% elsif weather == 'rain' %>
+          <img src="/weather/rain.png" width="50px" height="50px"><br><%= '雨' %>
+        <% elsif weather == 'thunderstorm' %>
+          <img src="/weather/thunderstorm.png" width="50px" height="50px"><br><%= '雷雨' %>
+        <% elsif weather == 'snow' %>
+          <img src="/weather/snow.png" width="50px" height="50px"><br><%= '雪' %>
+        <% elsif weather == 'mist' %>
+          <img src="/weather/mist.png" width="50px" height="50px"><br><%= '霧' %>
+        <% end %>
+        </div>
+        <div class=" col-7">
+          <p>最高気温：<%= @temp_max %>℃</p>
+          <p>最低気温：<%= @temp_min %>℃</p>
+        </div>
+        </div>
+      </div>
+      </div>
+  </aside>
+  
+  <aside class="col-sm-9  textsm  mt-3">
+    <div class="card">
+        <div class="card-header c-height">
+          <h4 class="card-title text-center">お知らせ一覧</h4>
+        </div>
+        
+          <table class="table" style="table-layout:fixed font-size: 5pt;">
+            <thead>
+              <tr>
+                <th style="width:19%">投稿日時</th>
+                <th style="width:15%">投稿者</th>
+                <th style="width:30%">タイトル</th>
+                <th style="width:45%">内容</th>
+              </tr>
+            </thead>
+            <% @notices.each do |notice| %>
+            <tbody>
+              <tr>
+                <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                <td><%= notice.user.name %></td>
+                <td><%= link_to notice.title, notice_path(notice) %></td>
+                <td><%= notice.content.truncate(35, omission: '…') %></td>
+              </tr>
+            </tbody>
+            <% end %>
+            <%= paginate @notices %>
+            
+          </table>
+
+    </div>
+  </aside>
+</div>

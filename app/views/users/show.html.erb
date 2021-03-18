@@ -1,0 +1,25 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="mx-auto">
+        <div class="card-header">
+          <h3 class="card-title　mx-auto">My Groups</h3>
+        </div>
+        <div class="card-body">
+          <img class="rounded img-fluid" src="<%= @user.image %>" alt="">
+          <h2><%= @user.name %></h2>
+          <%= link_to '登録情報修正', edit_user_path(@user) %>
+        </div>
+      </div>
+    </div>
+  </aside>
+  
+
+  <div class="col-sm-8">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="#" class="nav-link">グループトップ</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">メンバー一覧</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">予定</a></li>
+    </ul>
+  </div>
+</div>

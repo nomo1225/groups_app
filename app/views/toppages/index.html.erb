@@ -1,0 +1,77 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-sm-4">
+      <div class="card text-center">
+          <div class="card-header">
+            <h3 class="card-title　mx-auto">My Profile</h3>
+          </div>
+          <div class="card-body border-info">
+            <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="" width="80" height="80">
+            <h4><%= @user.name %></h4>
+            <% if @user.id == current_user.id %>
+              <button type="button" class="btn btn-outline-info mx-auto  btn-sm mb-1">
+                <%= link_to '登録情報修正', edit_user_path(@user) %>
+              </button>
+            <% end %>
+          </div>
+      </div>
+      <div class="d-flex flex-column mt-2">
+        <%= link_to 'グループに参加する', join_path(@user),class: "btn btn-primary mt-2" %>
+        <%= link_to 'グループを作成する', new_mygroup_path, class: "btn btn-primary mt-2" %>
+      </div>
+    </aside>
+    
+    <div class="col-sm-8">
+      <div class="card text-center">
+          <div class="card-header">
+            <h5 class="card-title　mx-auto">参加グループ一覧</h5>
+            <i class="far fa-flag"></i><span class="text-muted">:あなたの作成したグループ</span>
+          </div>
+          <div class="card-body">
+            <% @made_mygroups.each do |mygroup| %>
+              <div class="row mt-2 border-bottom">
+                <div class="col-sm-3">
+                    <img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="80" height="80">
+                </div>
+                <div class="col-sm-8">
+                  <h4><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name, mygroup_path(mygroup) %></h4>
+                  <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= mygroup.area %></p>
+                  <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= mygroup.category %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="card-body">
+            <% @mygroups.each do |mygroup| %>
+              <% if mygroup.user_id != current_user.id %>
+                <div class="row mt-2 border-bottom">
+                  <div class="col-sm-3">
+                    <img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="100" height="100">
+                  </div>
+                  <div class="col-sm-8">
+                    <h4><%= link_to mygroup.name, mygroup_path(mygroup) %></h4>
+                    <p><span class="text-secondary">地域：</span><%= mygroup.area %></p>
+                    <p><span class="text-secondary">カテゴリー：</span><%= mygroup.category %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron home">
+    <div class="text-center">
+      <h1>Groups</h1>
+      <h5>group of yours</h5>
+
+      <p class="text-secondary mt-5"><%=link_to 'about Groups', about_path %></p>
+    
+      <%= link_to signup_path, class: 'btn btn-lg btn-primary mt-5' do%>
+       <i class="far fa-hand-point-right faa-horizontal animated"></i> 新規登録はこちら
+      <% end %>
+    </div>
+  </div>
+<% end %>

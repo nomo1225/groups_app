@@ -1,0 +1,9 @@
+aws:
+  access_key_id: KIAV3CITEF5O6EO2S4S
+  secret_access_key: uUsZm8MpTOZ20cFDykIGTTBxzHblQ8IXgm8w2zH5
+
+open_weahter:
+   appid: f3beb9488c65079350e2dc3c2252f7af
+   uri: https://samples.openweathermap.org/data/2.5/forecast
+# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
+secret_key_base: 0ff66ae3b93dfe75c2c7c1ae731989c03735b5fe9cb0ff6b9fb338fb758d92c5d4c616c49e181519ba1ad6dd699c81c95971c45f66d7f2417a8927ce35399f19
