@@ -20,6 +20,7 @@ class PlansController < ApplicationController
   end
 
   def show
+    @attendances = Attendance.where(plan_id: @plan.id)
   end
 
   def edit

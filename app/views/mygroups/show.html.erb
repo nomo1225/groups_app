@@ -17,24 +17,20 @@
         <div class="row">
         <div class="col-5">
         <% weather = @weather_main %>
-        <% if weather == 'clear sky' %>
-          <img src="/weather/clear sky.png" width="50px" height="50px"><br><%= '快晴' %>
-        <% elsif weather == 'few clouds' %>
-          <img src="/weather/few clouds.png" width="50px" height="50px"><br><%= '晴れ' %>
-        <% elsif weather == 'broken clouds' %>
+        <% if weather == 'Clear' %>
+          <img src="/weather/clear sky.png" width="50px" height="50px"><br><%= '晴れ' %>
+        <% elsif weather == 'Clouds' %>
           <img src="/weather/brokenclouds.png" width="50px" height="50px"><br><%= 'くもり' %>
-        <% elsif weather == 'scattered clouds' %>
-          <img src="/weather/scattered clouds.png" width="50px" height="50px"><br><%= 'くもり' %>
-        <% elsif weather == 'shower rain' %>
-          <img src="/weather/shower rain.png" width="50px" height="50px"><br><%= '小雨' %>
-        <% elsif weather == 'rain' %>
+        <% elsif weather == 'Rain' %>
           <img src="/weather/rain.png" width="50px" height="50px"><br><%= '雨' %>
-        <% elsif weather == 'thunderstorm' %>
+        <% elsif weather == 'Thunderstorm' %>
           <img src="/weather/thunderstorm.png" width="50px" height="50px"><br><%= '雷雨' %>
-        <% elsif weather == 'snow' %>
+        <% elsif weather == 'Snow' %>
           <img src="/weather/snow.png" width="50px" height="50px"><br><%= '雪' %>
-        <% elsif weather == 'mist' %>
+        <% elsif weather == 'Fog' || weather == 'Drizzle'  %>
           <img src="/weather/mist.png" width="50px" height="50px"><br><%= '霧' %>
+        <% elsif weather == 'Squall' %>
+          <img src="/weather/squall.png" width="50px" height="50px"><br><%= '強風' %>
         <% end %>
         </div>
         <div class=" col-7">

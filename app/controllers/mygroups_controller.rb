@@ -32,7 +32,7 @@ class MygroupsController < ApplicationController
     client = HTTPClient.new
     response = client.get(url)
     hash =JSON.load(response.body).to_a
-    @weather_main = hash[1][1][0]['description']
+    @weather_main = hash[1][1][0]['main']
     @temp_min = hash[3][1]['temp_min'].round
     @temp_max = hash[3][1]['temp_max'].round
   end
