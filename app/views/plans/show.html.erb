@@ -31,8 +31,8 @@
       <td>
         <% @attendances.each do |a| %>
           <%= User.find(a.user_id).name %><span>,</span>
-          <p>計：<%= Attendance.where(plan_id: @plan.id).count %>人</p>
         <% end %>
+        <p>計：<%= Attendance.where(plan_id: @plan.id).count %>人</p>
       </td>
     </tr>
   </tbody>
