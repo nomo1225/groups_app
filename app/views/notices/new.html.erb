@@ -19,7 +19,8 @@
       </div>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :mygroup_id, value: (params[:mygroup]) %>
+      <%= f.hidden_field :mygroup_id, value: @mygroup_id %>
+      
       <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>

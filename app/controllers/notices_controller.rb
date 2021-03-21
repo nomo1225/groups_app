@@ -5,18 +5,18 @@ class NoticesController < ApplicationController
   
   def new
     @notice = Notice.new
- 
+    @mygroup_id = params[:mygroup_id]
   end
 
   def create
     @notice = Notice.new(notice_params)
+    @mygroup_id = params[:notice][:mygroup_id]
     if @notice.save
       flash[:success] = 'お知らせを登録しました。'
       redirect_to mygroup_path(@notice.mygroup_id)
     else
-      flash[:danger] = 'お知らせを登録できませんでした。
-                        タイトル(全角25字以内)・内容(全角100字以内)は入力必須です。'
-      redirect_to mygroup_path(@notice.mygroup_id)
+      flash[:danger] = 'お知らせを登録できませんでした。'
+      render :new
     end
   end
   

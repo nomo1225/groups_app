@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
   
-  resources :mygroups, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :mygroups, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :notices, only: [:new]
+    resources :plans, only: [:new]
+  end
   resources :relationships, only: [:create, :destroy]
-  resources :notices, only: [:new, :create, :show, :edit, :update, :destroy]
-  resources :plans, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :notices, only: [:create, :show, :edit, :update, :destroy]
+  resources :plans, only: [:create, :show, :edit, :update, :destroy] do
     member do
       get :attenders
     end

@@ -5,17 +5,18 @@ class PlansController < ApplicationController
   
   def new
     @plan = Plan.new
+    @mygroup_id = params[:mygroup_id]
   end
 
   def create
     @plan = Plan.new(plan_params)
+    @mygroup_id = params[:plan][:mygroup_id]
     if @plan.save
       flash[:success] = '予定を登録しました。'
       redirect_to "/mygroups/#{@plan.mygroup_id}/plans"
     else
-      flash[:danger] = '予定を登録できませんでした。
-                        全項目入力必須です。タイトル・内容は全角20字以内。'
-      redirect_to "/mygroups/#{@plan.mygroup_id}/plans"
+      flash[:danger] = '予定を登録できませんでした。'
+      render :new
     end
   end
 

@@ -19,7 +19,7 @@ ja:
       plan:
         title: タイトル
         content: 内容
-        plan_on: 予定日
+        start_time: 予定日
         plan_at: 予定時間
     errors:
       messages:
