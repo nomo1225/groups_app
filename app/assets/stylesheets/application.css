@@ -24,14 +24,15 @@ html {
  }
  
  .navcolor {
-  background-color: #afeeee;
+  background-color: white;
  }
  a.nav-linkactive {
   color: #191970;
+  background-color: #afeeee;
+  display: block;
+  font-size: 20px;
  }
- a.nav-link {
-  color: #a9a9a9;
- }
+
  
  body {
   font-family: Meiryo,Georgia;
@@ -39,7 +40,7 @@ html {
  }
  /*予定とかのheight*/
  .c-height {
-  height: 35px;
+  height: 45px;
  }
  
  .calendar {
@@ -55,6 +56,11 @@ html {
 
  .card-margin {
   margin: -0.5rem ;
+ }
+ .table-style {
+  margin: -0.2rem ;
+  table-layout: fixed;
+  font-size: 10pt;
  }
  
  .about img {

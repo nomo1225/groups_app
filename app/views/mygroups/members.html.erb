@@ -8,10 +8,10 @@
   <aside class="col-sm-9 mt-3">
     <div class="card">
         <div class="card-header c-height">
-          <h4 class="card-title text-center">メンバー一覧</h4>
+          <h5 class="card-title text-center">メンバー一覧</h5>
         </div>
         
-          <table class="table" style="table-layout:fixed">
+          <table class="table table-style">
             <thead>
               <tr class="text-center">
                 <th style="width:10%"></th>
@@ -22,7 +22,7 @@
             <% @members.each do |member| %>
             <tbody>
               <tr class="text-center">
-                <td><img class="rounded img-fluid" src="<%= member.image.url %>" alt="" width="50" height="50"></td>
+                <td><img class="rounded img-fluid" src="<%= member.image.url %>" alt="" width="40" height="40"></td>
                 <td><%= member.name %></td>
                 <td><%= member.join(@mygroup).created_at.strftime("%Y-%m-%d") %></td>
               </tr>

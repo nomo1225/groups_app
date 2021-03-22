@@ -6,13 +6,14 @@ class RelationshipsController < ApplicationController
   end
   
   def create
+    @user = User.find(current_user.id)
     mygroup = Mygroup.find_by(group_id: params[:relationship][:group_id])
     if mygroup.present? && mygroup.name == params[:relationship][:name] && current_user.join(mygroup)
       flash[:success] = 'グループに参加しました。'
       redirect_to root_path
     else
       flash[:danger] = '参加できませんでした。グループ名とIDの組合せが間違っています。'
-      redirect_to root_path
+      redirect_to join_path(@user)
     end
   end
 
