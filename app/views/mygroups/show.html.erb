@@ -13,24 +13,24 @@
     </div>
     <div class="card bg-light mt-3 text-center">
       <div class="card-header"><%= @mygroup.area %>のお天気</div>
-      <div class="card-body">
+      <div class="card-body weather">
         <div class="row">
         <div class="col-5">
         <% weather = @weather_main %>
         <% if weather == 'Clear' %>
-          <img src="/weather/clear sky.png" width="50px" height="50px"><br><%= '晴れ' %>
+          <img src="/weather/clear sky.png" alt=""><br><%= '晴れ' %>
         <% elsif weather == 'Clouds' %>
-          <img src="/weather/brokenclouds.png" width="50px" height="50px"><br><%= 'くもり' %>
+          <img src="/weather/brokenclouds.png" alt=""><br><%= 'くもり' %>
         <% elsif weather == 'Rain' %>
-          <img src="/weather/rain.png" width="50px" height="50px"><br><%= '雨' %>
+          <img src="/weather/rain.png" alt=""><br><%= '雨' %>
         <% elsif weather == 'Thunderstorm' %>
-          <img src="/weather/thunderstorm.png" width="50px" height="50px"><br><%= '雷雨' %>
+          <img src="/weather/thunderstorm.png" alt=""><br><%= '雷雨' %>
         <% elsif weather == 'Snow' %>
-          <img src="/weather/snow.png" width="50px" height="50px"><br><%= '雪' %>
+          <img src="/weather/snow.png" alt=""><br><%= '雪' %>
         <% elsif weather == 'Fog' || weather == 'Drizzle'  %>
-          <img src="/weather/mist.png" width="50px" height="50px"><br><%= '霧' %>
+          <img src="/weather/mist.png" alt=""><br><%= '霧' %>
         <% elsif weather == 'Squall' %>
-          <img src="/weather/squall.png" width="50px" height="50px"><br><%= '強風' %>
+          <img src="/weather/squall.png" alt=""><br><%= '強風' %>
         <% end %>
         </div>
         <div class=" col-7">
@@ -48,7 +48,7 @@
           <h4 class="card-title text-center">お知らせ一覧</h4>
         </div>
         
-          <table class="table" style="table-layout:fixed font-size: 5pt;">
+          <table class="table" style="table-layout: fixed; font-size: 10pt;">
             <thead>
               <tr>
                 <th style="width:19%">投稿日時</th>

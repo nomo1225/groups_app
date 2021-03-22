@@ -33,14 +33,14 @@
 
 <div class="d-flex flex-column mt-2">
   <% if @notice.user_id == current_user.id %>
-    <button type="button" class="btn btn-outline-info mx-auto  btn-sm mb-1">
+    <div class="btn btn-outline-info mx-auto  btn-sm mb-1">
       <%= link_to '編集する', edit_notice_url(mygroup_id: @notice.mygroup.id)%>
-    </button>
-    <button type="button" class="btn btn-outline-danger mx-auto  btn-sm mb-1">
+    </div>
+    <div class="btn btn-outline-danger mx-auto  btn-sm mb-1">
       <%= link_to '削除する', @notice, method: :delete, data: { confirm: '本当に削除しますか？' }%>
-    </button>
+    </div>
   <% end %>
-  <button type="button" class="btn btn-outline-secondary mx-auto  btn-sm">
+  <div class="btn btn-outline-secondary mx-auto  btn-sm">
     <%= link_to 'グループトップに戻る', mygroup_path(@notice.mygroup_id) %>
-  </button>
+  </div>
 </div>

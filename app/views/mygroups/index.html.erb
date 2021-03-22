@@ -14,21 +14,21 @@
           <h4 class="card-title text-center">予定一覧</h4>
         </div>
         
-          <table class="table" style="table-layout:fixed font-size: 1px;">
+          <table class="table" style="table-layout:fixed; font-size: 12px;">
             <thead>
               <tr>
                 <th style="width:17%">予定日時</th>
-                <th style="width:15%">登録者</th>
+                <th style="width:13%">登録者</th>
                 <th style="width:15%">タイトル</th>
-                <th style="width:27%">内容</th>
-                <th style="width:8%">出欠状況</th>
+                <th style="width:25%">内容</th>
+                <th style="width:12%">出欠状況</th>
                 <th style="width:8%">人数</th>
               </tr>
             </thead>
             <% @plans.each do |plan| %>
             <tbody>
               <tr>
-                <td><%= plan.start_time.strftime("%Y-%m-%d") %>/<%= plan.plan_at.strftime("%H:%M") %></th>
+                <td><%= plan.start_time.strftime("%Y-%m-%d") %>/<%= plan.plan_at.strftime("%H:%M") %></td>
                 <td><%= User.find(plan.user_id).name %></td>
                 <td><%= link_to plan.title, plan_path(plan) %></td>
                 <td><%= plan.content.truncate(15, omission: '…') %></td>

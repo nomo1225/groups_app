@@ -5,9 +5,9 @@
     <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= @mygroup.area %></p>
     <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category %></p>
     <% if @mygroup.user_id == current_user.id %>
-      <button type="button" class="btn btn-outline-info  btn-sm">
+      <div class="btn btn-outline-info mx-auto  btn-sm mb-1">
         <%= link_to '登録情報修正', edit_mygroup_path(@mygroup) %>
-      </button>
+      </div>
     <% end %>
   </div>
 </div>

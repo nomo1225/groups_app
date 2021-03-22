@@ -56,3 +56,11 @@ html {
  .card-margin {
   margin: -0.5rem ;
  }
+ 
+ .about img {
+  width: 80%;
+ }
+ 
+  .weather img {
+  width: 70%;
+ }

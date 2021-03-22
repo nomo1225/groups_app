@@ -1,11 +1,11 @@
 <% if current_user.attending?(plan) %>
   <%= form_with(model: current_user.attendances.find_by(plan_id: plan.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :plan_id, plan.id %>
-    <%= f.submit '出席', class: 'btn btn-outline-success btn-block' %>
+    <%= f.submit '出席', class: 'btn btn-outline-success btn-block btn-sm' %>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.attendances.build, local: true) do |f| %>
     <%= hidden_field_tag :plan_id, plan.id %>
-    <%= f.submit '欠席', class: 'btn btn-outline-danger btn-block' %>
+    <%= f.submit '欠席', class: 'btn btn-outline-danger btn-block btn-sm' %>
   <% end %>
 <% end %>
