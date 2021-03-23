@@ -62,7 +62,7 @@
               <tr>
                 <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
                 <td><%= notice.user.name %></td>
-                <td><%= link_to notice.title, notice_path(notice) %></td>
+                <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
                 <td><%= notice.content.truncate(35, omission: '…') %></td>
               </tr>
             </tbody>
