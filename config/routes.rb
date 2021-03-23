@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'join', to: 'relationships#new'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
+  resources :users, only: [:index, :create, :edit, :update, :destroy]
   
   resources :mygroups, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :notices, only: [:new]

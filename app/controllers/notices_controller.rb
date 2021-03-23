@@ -2,10 +2,16 @@ class NoticesController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
   before_action :create_member?, only: [:edit, :update, :destroy]
+  before_action :group_member?, only: [:show]
   
   def new
     @notice = Notice.new
     @mygroup_id = params[:mygroup_id]
+    @mygroup = Mygroup.find(@mygroup_id)
+    unless @mygroup.members.exists?(id: current_user.id)
+      flash[:danger] = '権限がありません。'
+      redirect_to root_path
+    end
   end
 
   def create
@@ -55,6 +61,15 @@ class NoticesController < ApplicationController
   def create_member?
     @notice = Notice.find(params[:id])
     if @notice.user_id != current_user.id
+      flash[:danger] = '権限がありません。'
+      redirect_to root_path
+    end
+  end
+  
+  def group_member?
+    @notice = Notice.find(params[:id])
+    @mygroup = Mygroup.find(@notice.mygroup_id)
+    unless @mygroup.members.exists?(id: current_user.id)
       flash[:danger] = '権限がありません。'
       redirect_to root_path
     end

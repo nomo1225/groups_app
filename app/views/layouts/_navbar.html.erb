@@ -1,15 +1,14 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-light bg-light" style="height:50px;">
+  <nav class="navbar navbar-expand navbar-light bg-light" style="height:50px;">
     <a class="navbar-brand" href="/"><img src="/logo.png" width="90" height="50"  alt=""></a>
-
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <% if logged_in? %>
             <li class="nav-item m-2"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link btn btn-outline-warning' %></li>
           <% else %>
-            <li class="nav-item"><%= link_to 'Groupsとは', about_path, class: 'nav-link btn btn-outline-danger mr-1' %></li>
-            <li class="nav-item"><%= link_to '新規登録', signup_path, class: 'nav-link btn btn-outline-warning mr-1' %></li>
-            <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link btn btn-outline-success' %></li>
+            <li class="nav-item"><%= link_to 'Groupsとは', about_path, class: 'btn btn-outline-danger mr-1' %></li>
+            <li class="nav-item"><%= link_to '新規登録', signup_path, class: 'btn btn-outline-warning mr-1' %></li>
+            <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'btn btn-outline-success' %></li>
           <% end %>
         </ul>
       </div>

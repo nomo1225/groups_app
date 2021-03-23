@@ -6,7 +6,7 @@ class MygroupsController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_mygroup, only: [:show, :index, :edit, :update, :destroy, :members]
   before_action :representative?, only: [:edit, :update, :destroy]
-  before_action :member?, only: [:show]
+  before_action :member?, only: [:show, :members, :index]
   
   def new
     @mygroup = Mygroup.new
@@ -89,8 +89,7 @@ class MygroupsController < ApplicationController
   
   def member?
     @mygroup = Mygroup.find(params[:id])
-    @member = @mygroup.members.find(current_user.id)
-    if @member.id != current_user.id
+    unless @mygroup.members.exists?(id: current_user.id)
       flash[:danger] = '権限がありません。'
       redirect_to root_path
     end
