@@ -9,7 +9,7 @@
        <%= render 'layouts/error_messages', model: f.object %>
       
       <div class="form-group">
-        <%= f.label :group_id, 'グループID(半角英数字6字以上)' %>
+        <%= f.label :group_id, 'グループID(半角英小文字と数字の組合せで6字以上)' %>
         <p><small class="text-muted">※メンバーが参加する際に必要になります</small></p>
         <%= f.text_field :group_id, class: 'form-control' %>
       </div>
