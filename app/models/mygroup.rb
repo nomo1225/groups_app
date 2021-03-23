@@ -2,11 +2,11 @@ class Mygroup < ApplicationRecord
   belongs_to :user
   
   before_save { self.group_id.downcase! }
-  VALID_GROPID_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w{6,12}\z/
-  
+  VALID_GROPID_REGEX =/\A[a-z0-9]+\z/
+
   validates :group_id, presence: true, uniqueness: true,
                        format: { with: VALID_GROPID_REGEX,
-                       message: "は半角英数字6~12文字、各１文字以上含む必要があります"}
+                       message: "は半角英小文字と数字各１文字以上を含む6~12文字"}
   validates :name, presence: true, length: { maximum: 50 }
   validates :area, presence: true
   validates :category, presence: true, length: { maximum: 20 }
