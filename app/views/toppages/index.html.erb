@@ -9,9 +9,7 @@
             <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="" width="70" height="70">
             <h4><%= @user.name %></h4>
             <% if @user.id == current_user.id %>
-              <div class="btn btn-outline-info mx-auto  btn-sm mb-1">
-                <%= link_to '登録情報修正', edit_user_path(@user) %>
-              </div>
+              <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
             <% end %>
           </div>
       </div>
@@ -21,45 +19,46 @@
       </div>
     </aside>
     
-    <div class="col-sm-8">
-      <div class="card text-center">
-          <div class="card-header">
-            <h5 class="card-title　mx-auto">参加グループ一覧</h5>
-            <i class="far fa-flag"></i><span class="text-muted">:あなたの作成したグループ</span>
-          </div>
-          <div class="card-body border-bottom card-margin">
-            <% @made_mygroups.each do |mygroup| %>
-              <div class="row">
-                <div class="col-sm-3">
-                    <img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="80" height="80">
-                </div>
-                <div class="col-sm-8">
-                  <h4><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name, mygroup_path(mygroup) %></h4>
-                  <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= mygroup.area %></p>
-                  <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= mygroup.category %></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
-
+    <div class="col-sm-8 textsm mt-3">
+      <div class="card">
+        <div class="card-header c-height">
+          <h5 class="card-title text-center">参加グループ一覧<span class="mg-left"><i class="far fa-flag"></i>あなたの作成したグループ</span></h5>
           
-          <div class="card-body border-bottom">
-            <% @mygroups.each do |mygroup| %>
-              <% if mygroup.user_id != current_user.id %>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="80" height="80">
-                  </div>
-                  <div class="col-sm-8">
-                    <h4><%= link_to mygroup.name, mygroup_path(mygroup) %></h4>
-                    <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= mygroup.area %></p>
-                    <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= mygroup.category %></p>
-                  </div>
-                </div>
-              <% end %>
+        </div>
+        <table class="table table-style">
+          <thead>
+            <tr>
+              <th style="width:25%"></th>
+              <th style="width:25%">グループ名</th>
+              <th style="width:25%">地域</th>
+              <th style="width:25%">カテゴリ</th>
+            </tr>
+          </thead>
+          <% @made_mygroups.each do |mygroup| %>
+          <tbody>
+            <tr>
+              <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="50" height="50"></td>
+              <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name, mygroup_path(mygroup) %></td>              
+              <td><%= mygroup.area %></td>
+              <td><%= mygroup.category %></td>
+            </tr>
+          </tbody>
+          <% end %>
+            
+          <% @mygroups.each do |mygroup| %>
+            <% if mygroup.user_id != current_user.id %>
+              <tbody>
+                <tr>
+                  <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="50" height="50"></td>
+                  <td><%= link_to mygroup.name, mygroup_path(mygroup) %></td>
+                  <td><%= mygroup.area %></td>
+                  <td><%= mygroup.category %></td>
+                </tr>
+              </tbody>
             <% end %>
-          </div>
-          
+          <% end %>
+          <%= paginate @mygroups %>
+        </table>
       </div>
     </div>
   </div>
