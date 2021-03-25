@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get 'join', to: 'relationships#new'
   
   get 'signup', to: 'users#new'
+  get 'forget', to: 'users#forget'
+  post 'forget', to: 'users#forgetmail'
+  get 'reset_password', to: 'users#resetpass'
+  post 'reset_password', to: 'users#runresetpass'
+  
   resources :users, only: [:index, :create, :edit, :update, :destroy]
   
   resources :mygroups, only: [:new, :create, :show, :edit, :update, :destroy] do

@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h1>パスワードを忘れた方</h1>
+  <p>※以下にメールアドレスを入力し、届いたメールよりパスワードを再設定してください。</p>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(url: '/forget', local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :email, 'メールアドレス' %> <i class="far fa-envelope"></i>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit 'パスワード再設定メールを送信する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
