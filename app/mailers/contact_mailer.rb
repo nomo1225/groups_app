@@ -1,5 +1,5 @@
 class ContactMailer < ApplicationMailer
-  default from: ENV['GMAIL']
+  default from: ENV['GMAIL_EMAIL']
   
   def signup_mail(user)
     @user = user
