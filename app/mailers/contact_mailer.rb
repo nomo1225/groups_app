@@ -9,7 +9,7 @@ class ContactMailer < ApplicationMailer
   
   def forget_pass(user)
     @user = user
-    @url = "https://groups_app.net/reset_password?reset_token=#{@user.reset_token}"
+    @url = "https://www.groups-app.net/reset_password?reset_token=#{@user.reset_token}"
     mail(to: @user.email, subject: 'Groupsのパスワード再設定メール')
   end
 end
