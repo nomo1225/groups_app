@@ -68,19 +68,27 @@ class UsersController < ApplicationController
   end
   
   def resetpass
+    if params[:reset_token] == nil || User.find_by(reset_token: params[:reset_token]) ==nil
+      flash[:danger] = 'トークンが無効です。再度パスワード再設定メールを送信してください。'
+      redirect_to login_path
+    end
     @user = User.find_by(reset_token: params[:reset_token])
   end
   def runresetpass
     @user = User.find(params[:user_id])
-    if @user
-      @user.assign_attributes(reset_token: nil)
-      @user.save(validate: false)
-      @user.update(password: params[:password])
-      flash[:success] = 'パスワードを再設定しました。'
-      redirect_to login_path
-    else
-      flash[:danger] = '不正なアクセスです。'
+    unless @user
+      flash[:danger] = '不正なアクセスです。' 
       redirect_to root_path
+    else
+      if @user.update(passwordreset_params)
+        @user.assign_attributes(reset_token: nil)
+        @user.save(validate: false)
+        flash[:success] = 'パスワードを再設定しました。'
+        redirect_to login_path
+      else
+        flash.now[:danger] = 'パスワード再設定に失敗しました。'
+        render :resetpass
+      end
     end
   end
   
@@ -102,4 +110,9 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  def passwordreset_params
+    params.permit(:password, :password_confirmation)
+  end
+  
 end

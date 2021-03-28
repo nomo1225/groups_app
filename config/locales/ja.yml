@@ -12,6 +12,7 @@ ja:
         name: 名前 or ニックネーム
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード再入力
         image: アイコン
       notice:
         title: タイトル
