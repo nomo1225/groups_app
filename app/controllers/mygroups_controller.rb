@@ -38,7 +38,8 @@ class MygroupsController < ApplicationController
   end
   
   def index
-    @plans = @mygroup.plans.where('plans.start_time > ?', Date.today).order(start_time: :asc).page(params[:page]).per(4)
+    @plans = @mygroup.plans.where('plans.start_time > ?', Date.yesterday).order(start_time: :asc).page(params[:page]).per(4)
+    @plans_for_calender = @mygroup.plans.all
   end
 
   def edit

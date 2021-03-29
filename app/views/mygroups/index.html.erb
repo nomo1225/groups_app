@@ -43,7 +43,7 @@
   </aside>
   
   <aside class="col-sm calendar">
-  <%= month_calendar events: @plans do |date, plans| %>
+  <%= month_calendar events: @plans_for_calender do |date, plans| %>
     <%= date.day %>
       <% plans.each do |plan| %>
         <div>

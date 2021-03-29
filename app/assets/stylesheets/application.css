@@ -75,3 +75,15 @@ html {
   margin-left: 20px;
   font-size: 12px;
  }
+ 
+ .ft-right {
+  float: right;
+ }
+ .ft-right li{
+  display: inline;
+  margin-right: 10px
+ }
+ 
+ .ft-center {
+  clear: right;
+ }

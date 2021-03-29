@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
   get 'about', to: 'toppages#about'
+  get 'terms', to: 'toppages#terms'
+  get 'privacy_policy', to: 'toppages#privacy_policy'
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

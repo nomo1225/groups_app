@@ -32,8 +32,9 @@
         <%= f.label :image, 'アイコン画像' %> <i class="far fa-smile"></i>
         <%= f.file_field :image, class: 'form-control' %>
       </div>
-
-      <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
+      
+      <p>本サービスへ登録した時点で、<%= link_to'利用規約', terms_path %>に同意したものとします</p>
+      <%= f.submit '利用規約に同意して登録', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
 </div>
