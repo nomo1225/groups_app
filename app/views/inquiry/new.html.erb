@@ -1,0 +1,38 @@
+<% if @inquiry.errors.full_messages.present? %>
+  <div id="error_explanation" class="alert alert-warning">
+    <ul class="mb-0">
+      <% @inquiry.errors.each do |attr, message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <h1>お問い合わせ</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(url: inquiry_index_path, local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :name, 'お名前' %><span class="form-color">※入力必須</span>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, 'メールアドレス' %><span class="form-color">※入力必須</span>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :message, 'お問い合わせ内容' %>
+        <%= f.text_area :message, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit '送信する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

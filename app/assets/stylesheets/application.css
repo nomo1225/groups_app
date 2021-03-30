@@ -75,7 +75,8 @@ html {
   margin-left: 20px;
   font-size: 12px;
  }
- 
+
+/*footer*/ 
  .ft-right {
   float: right;
  }
@@ -83,7 +84,12 @@ html {
   display: inline;
   margin-right: 10px
  }
- 
  .ft-center {
   clear: right;
+ }
+ 
+/*入力必須赤字*/
+ .form-color {
+  color: red;
+  margin-left: 10px;
  }

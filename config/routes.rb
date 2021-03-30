@@ -33,5 +33,5 @@ Rails.application.routes.draw do
     end
   end
   resources :attendances, only: [:create, :destroy]
-  
+  resources :inquiry, only: [:new, :create]
 end
