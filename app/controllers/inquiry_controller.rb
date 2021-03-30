@@ -7,6 +7,7 @@ class InquiryController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.valid?
       ContactMailer.inquiry_mail(@inquiry).deliver_now
+      ContactMailer.inquiry_reply(@inquiry).deliver_now
       flash[:success] = 'お問い合わせを送信しました。'
       redirect_to root_path
     else

@@ -15,7 +15,11 @@ class ContactMailer < ApplicationMailer
   
   def inquiry_mail(inquiry)
     @inquiry = inquiry
-    # mail(to: ENV['GMAIL_EMAIL'], subject: 'Groupsへの問い合わせ')
     mail(to: ENV['GMAIL_NOMO'], subject: 'Groupsへの問い合わせ')
+  end
+  
+  def inquiry_reply(inquiry)
+    @inquiry = inquiry
+    mail(to: @inquiry.email, subject: 'Groupsへのお問い合わせ')
   end
 end
