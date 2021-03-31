@@ -58,7 +58,7 @@ class NoticesController < ApplicationController
     params.require(:notice).permit(:title, :content, :user_id, :mygroup_id)
   end
   
-  def create_member?
+  def create_member? #予定作成者か
     @notice = Notice.find(params[:id])
     if @notice.user_id != current_user.id
       flash[:danger] = '権限がありません。'

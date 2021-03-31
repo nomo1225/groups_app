@@ -3,7 +3,7 @@
   <div class="text-center">
     <h5 class="font-weight-bold"><%= @mygroup.name %></h5>
     <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= @mygroup.area %></p>
-    <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category %></p>
+    <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category.truncate(10, omission: '…') %></p>
     <% if @mygroup.user_id == current_user.id %>
       <%= link_to '登録情報修正', edit_mygroup_path(@mygroup), class: "btn btn-outline-info mx-auto  btn-sm mb-1" %>
     <% end %>

@@ -24,11 +24,14 @@ class MygroupsController < ApplicationController
     end
   end
 
-  def show
+  def show #Mygroupの天気情報
     @notices = @mygroup.notices.order(id: :desc).page(params[:page]).per(15)
     
     city = City.find_by(name: @mygroup.area)
-    url = "https://api.openweathermap.org/data/2.5/weather?id=#{city.location_id}&appid=#{ENV['OPEN_WEATHER_API_KEY']}&units=metric"
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    url << "?id=#{city.location_id}"
+    url << "&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
+    url << "&units=metric"
     client = HTTPClient.new
     response = client.get(url)
     hash =JSON.load(response.body).to_a
@@ -37,7 +40,7 @@ class MygroupsController < ApplicationController
     @temp_max = hash[3][1]['temp_max'].round
   end
   
-  def index
+  def index #予定の表示
     @plans = @mygroup.plans.where('plans.start_time > ?', Date.yesterday).order(start_time: :asc).page(params[:page]).per(4)
     @plans_for_calender = @mygroup.plans.all
   end
@@ -61,7 +64,7 @@ class MygroupsController < ApplicationController
     redirect_to root_path
   end
   
-  def members
+  def members #メンバー一覧
     @user = User.find(current_user.id)
     @members = @mygroup.members.order(id: :desc).page(params[:page]).per(15)
   end
@@ -76,11 +79,11 @@ class MygroupsController < ApplicationController
     params.require(:mygroup).permit(:name, :area, :user_id, :category, :image, :group_id)
   end
   
-  def mygroup_params2
+  def mygroup_params2 #update用
     params.require(:mygroup).permit(:name, :area, :user_id, :category, :image)
   end
   
-  def representative?
+  def representative? #グループの作成者か
     @mygroup = Mygroup.find(params[:id])
     if @mygroup.user_id != current_user.id
       flash[:danger] = '権限がありません。'
@@ -88,7 +91,7 @@ class MygroupsController < ApplicationController
     end
   end
   
-  def member?
+  def member? #グループのメンバーか
     @mygroup = Mygroup.find(params[:id])
     unless @mygroup.members.exists?(id: current_user.id)
       flash[:danger] = '権限がありません。'

@@ -1,11 +1,21 @@
 <% if current_user.attending?(plan) %>
   <%= form_with(model: current_user.attendances.find_by(plan_id: plan.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :plan_id, plan.id %>
-    <%= f.submit '出席', class: 'btn btn-outline-success btn-block btn-sm' %>
+    <div class="css-fukidashi">
+      <%= button_tag type: 'submit', class: 'btn btn-outline-success btn-block btn-sm mouseover' do %>
+        出席<i class="far fa-hand-point-left"></i>
+      <% end %>
+      <p class="fukidashi-g">クリックで『欠席』に変更</p>
+    </div>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.attendances.build, local: true) do |f| %>
     <%= hidden_field_tag :plan_id, plan.id %>
-    <%= f.submit '欠席', class: 'btn btn-outline-danger btn-block btn-sm' %>
+    <div class="css-fukidashi">
+      <%= button_tag type: 'submit', class: 'btn btn-outline-danger btn-block btn-sm mouseover' do %>
+        欠席<i class="far fa-hand-point-left"></i>
+      <% end %>
+      <p class="fukidashi-r">クリックで『出席』に変更</p>
+    </div>
   <% end %>
 <% end %>

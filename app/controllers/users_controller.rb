@@ -81,7 +81,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       if @user.update(passwordreset_params)
-        @user.assign_attributes(reset_token: nil)
+        @user.assign_attributes(reset_token: nil) #トークンリセット
         @user.save(validate: false)
         flash[:success] = 'パスワードを再設定しました。'
         redirect_to login_path

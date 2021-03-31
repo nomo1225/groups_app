@@ -3,7 +3,7 @@
     <aside class="col-sm-4">
       <div class="card text-center">
           <div class="card-header">
-            <h3 class="card-title　mx-auto">My Profile</h3>
+            <h3 class="card-title　mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h3>
           </div>
           <div class="card-body border-info">
             <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="" width="70" height="70">
@@ -29,9 +29,9 @@
           <thead>
             <tr>
               <th style="width:25%"></th>
-              <th style="width:25%">グループ名</th>
-              <th style="width:25%">地域</th>
-              <th style="width:25%">カテゴリ</th>
+              <th style="width:23%">グループ名</th>
+              <th style="width:15%">地域</th>
+              <th style="width:37%">カテゴリ</th>
             </tr>
           </thead>
           <% @made_mygroups.each do |mygroup| %>

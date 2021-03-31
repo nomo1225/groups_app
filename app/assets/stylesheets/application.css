@@ -77,6 +77,10 @@ html {
  }
 
 /*footer*/ 
+ footer {
+  margin-top: 10px;
+  font-size: 12px;
+ }
  .ft-right {
   float: right;
  }
@@ -92,4 +96,64 @@ html {
  .form-color {
   color: red;
   margin-left: 10px;
+ }
+
+/*吹き出し*/
+ .css-fukidashi {
+  padding: 0;
+  margin: 0;
+ }
+ .mouseover {
+  position: relative;
+  transition: 0.5s;
+ }
+ .fukidashi-g {
+  display: none;
+  width: 160px;
+  position: absolute;
+  top: 5px;
+  right: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #008000;
+  color: #fff;
+  font-size: 11px;
+  opacity: 0.6;
+ }
+ .fukidashi-g:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 70%;
+  margin-left: -15px;
+  border: 10px solid transparent;
+  border-top: 15px solid #008000;
+}
+ .mouseover:hover + .fukidashi-g {
+  display:  block;
+ }
+ .fukidashi-r {
+  display: none;
+  width: 160px;
+  position: absolute;
+  top: 5px;
+  right: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #ff0000;
+  color: #fff;
+  font-size: 11px;
+  opacity: 0.6;
+ }
+ .fukidashi-r:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 70%;
+  margin-left: -15px;
+  border: 10px solid transparent;
+  border-top: 15px solid #ff0000;
+}
+ .mouseover:hover + .fukidashi-r {
+  display:  block;
  }

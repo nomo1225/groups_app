@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def require_user_logged_in
+  def require_user_logged_in #loginユーザか
     unless logged_in?
       redirect_to login_url
     end

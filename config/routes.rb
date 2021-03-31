@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  get 'mygroups/:id/plans', to: 'mygroups#index'
+  get 'mygroups/:id/plans', to: 'mygroups#index', as: 'mygroup_plans' #as: '~'でpathを作成
   get 'mygroups/:id/members', to: 'mygroups#members'
   
   get 'join', to: 'relationships#new'

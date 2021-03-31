@@ -8,7 +8,7 @@ class PlansController < ApplicationController
     @plan = Plan.new
     @mygroup_id = params[:mygroup_id]
     @mygroup = Mygroup.find(@mygroup_id)
-    unless @mygroup.members.exists?(id: current_user.id)
+    unless @mygroup.members.exists?(id: current_user.id) #グループメンバーか
       flash[:danger] = '権限がありません。'
       redirect_to root_path
     end
@@ -19,7 +19,8 @@ class PlansController < ApplicationController
     @mygroup_id = params[:plan][:mygroup_id]
     if @plan.save
       flash[:success] = '予定を登録しました。'
-      redirect_to "/mygroups/#{@plan.mygroup_id}/plans"
+      #redirect_to "/mygroups/#{@plan.mygroup_id}/plans" (最初の書き方。以下に修正)
+      redirect_to mygroup_plans_path(id: @plan.mygroup_id)
     else
       flash[:danger] = '予定を登録できませんでした。'
       render :new
@@ -36,7 +37,7 @@ class PlansController < ApplicationController
   def update
     if @plan.update(plan_params)
       flash[:success] = '予定を編集しました。'
-      redirect_to "/mygroups/#{@plan.mygroup_id}/plans"
+      redirect_to mygroup_plans_path(id: @plan.mygroup_id)
     else
       flash.now[:danger] = '予定を編集できませんでした。'
       render :edit
@@ -46,7 +47,7 @@ class PlansController < ApplicationController
   def destroy
     @plan.destroy
     flash[:success] = '予定を削除しました。'
-    redirect_to "/mygroups/#{@plan.mygroup_id}/plans"
+    redirect_to mygroup_plans_path(id: @plan.mygroup_id)
   end
   
   private
