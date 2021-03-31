@@ -76,3 +76,6 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'fog-aws'
 end
+
+gem 'sitemap_generator'
+gem 'aws-sdk'

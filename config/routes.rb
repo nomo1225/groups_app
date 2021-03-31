@@ -35,5 +35,5 @@ Rails.application.routes.draw do
   resources :attendances, only: [:create, :destroy]
   resources :inquiry, only: [:new, :create]
   
-  get 'sitemap', to: redirect('https://groups-mybucket.s3-ap-northeast-1.amazonaws.com/sitemap.xml')
+  get '/sitemap', to: redirect("https://s3-ap-northeast-1.amazonaws.com/#{ENV['S3_BUCKET_KEY']}/sitemap.xml.gz")
 end
