@@ -24,7 +24,7 @@ SitemapGenerator::Sitemap.create do
   #
   # Add '/articles'
   #
-  add articles_path, :priority => 1.0, :changefreq => 'daily'
+  add root_path, :priority => 1.0, :changefreq => 'daily'
   #
   # Add all articles:
   #
