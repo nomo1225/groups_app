@@ -158,3 +158,11 @@ html {
  .mouseover:hover + .fukidashi-r {
   display:  block;
  }
+ 
+ /*Q&A*/
+ .qcoler {
+  color: red;
+ }
+ .acolor {
+  color: blue;
+ }
