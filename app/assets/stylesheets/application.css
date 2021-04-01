@@ -15,7 +15,9 @@
  */
 html {
     /* ルート要素の文字サイズを変更する */
-    font-size: 14px;
+    /*font-size: 14px;*/
+    /* 基本の16px*0.625=10px */
+     font-size: calc(62.5% + 0.5vw);
 } 
  
  .home { 
@@ -46,8 +48,6 @@ html {
  .calendar {
   background-color: #ffffff;
  }
- 
-
   @media (min-width: 500px) and (max-width: 600px) {
    .textsm {
     font-size: 11px;
@@ -60,7 +60,8 @@ html {
  .table-style {
   margin: -0.2rem ;
   table-layout: fixed;
-  font-size: 10pt;
+  /*font-size: 10pt;*/
+  font-size: calc(56.25% + 0.5vw);
  }
  
  .about img {

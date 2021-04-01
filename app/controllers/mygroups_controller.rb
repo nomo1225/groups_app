@@ -27,17 +27,20 @@ class MygroupsController < ApplicationController
   def show #Mygroupの天気情報
     @notices = @mygroup.notices.order(id: :desc).page(params[:page]).per(15)
     
-    city = City.find_by(name: @mygroup.area)
-    url = "https://api.openweathermap.org/data/2.5/weather"
-    url << "?id=#{city.location_id}"
-    url << "&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
-    url << "&units=metric"
-    client = HTTPClient.new
-    response = client.get(url)
-    hash =JSON.load(response.body).to_a
-    @weather_main = hash[1][1][0]['main']
-    @temp_min = hash[3][1]['temp_min'].round
-    @temp_max = hash[3][1]['temp_max'].round
+    unless @mygroup.area == "---"
+     
+      city = City.find_by(name: @mygroup.area)
+      url = "https://api.openweathermap.org/data/2.5/weather"
+      url << "?id=#{city.location_id}"
+      url << "&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
+      url << "&units=metric"
+      client = HTTPClient.new
+      response = client.get(url)
+      hash =JSON.load(response.body).to_a
+      @weather_main = hash[1][1][0]['main']
+      @temp_min = hash[3][1]['temp_min'].round
+      @temp_max = hash[3][1]['temp_max'].round
+    end
   end
   
   def index #予定の表示
