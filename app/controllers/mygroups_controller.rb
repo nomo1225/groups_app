@@ -31,9 +31,11 @@ class MygroupsController < ApplicationController
     unless @mygroup.area == "---"
       city = City.find_by(name: @mygroup.area)
       weather = Weather.find_by(location_id: city.location_id)
-      @weather_main = weather.weather_main
-      @temp_min     = weather.temp_min
-      @temp_max     = weather.temp_max
+      if weather
+        @weather_main = weather.weather_main
+        @temp_min     = weather.temp_min
+        @temp_max     = weather.temp_max
+      end
     end
   end
   
