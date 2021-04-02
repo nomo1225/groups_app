@@ -64,12 +64,8 @@
   </div>
 <% else %>
   <div class="center jumbotron home">
-    <div class="text-center">
-      <h1>Groups</h1>
-      <h5>group of yours</h5>
-
-      <p class="text-secondary mt-5"><%=link_to 'about Groups', about_path %></p>
-    
+    <div class="text-center top-title">
+      <p>Groups</p>
       <%= link_to signup_path, class: 'btn btn-lg btn-primary mt-5' do%>
        <i class="far fa-hand-point-right faa-horizontal animated"></i> 新規登録はこちら
       <% end %>
