@@ -4,9 +4,9 @@ class MygroupsController < ApplicationController
   require 'json'
   
   before_action :require_user_logged_in
-  before_action :set_mygroup, 　　only: [:show, :index, :edit, :update, :destroy, :members]
+  before_action :set_mygroup, only: [:show, :index, :edit, :update, :destroy, :members]
   before_action :representative?, only: [:edit, :update, :destroy]
-  before_action :member?, 　　　　only: [:show, :members, :index]
+  before_action :member?, only: [:show, :members, :index]
   
   def new
     @mygroup = Mygroup.new
@@ -24,22 +24,16 @@ class MygroupsController < ApplicationController
     end
   end
 
-  def show #Mygroupの天気情報
+  def show
     @notices = @mygroup.notices.order(id: :desc).page(params[:page]).per(15)
     
+    #Mygroupの天気情報
     unless @mygroup.area == "---"
-     
       city = City.find_by(name: @mygroup.area)
-      url = "https://api.openweathermap.org/data/2.5/weather"
-      url << "?id=#{city.location_id}"
-      url << "&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
-      url << "&units=metric"
-      client = HTTPClient.new
-      response = client.get(url)
-      hash =JSON.load(response.body).to_a
-      @weather_main = hash[1][1][0]['main']
-      @temp_min = hash[3][1]['temp_min'].round
-      @temp_max = hash[3][1]['temp_max'].round
+      weather = Weather.find_by(location_id: city.location_id)
+      @weather_main = weather.weather_main
+      @temp_min     = weather.temp_min
+      @temp_max     = weather.temp_max
     end
   end
   
