@@ -12,10 +12,10 @@
       <% end %>
     </div>
     <div class="card bg-light mt-3 text-center">
-      <div class="card-header"><%= @mygroup.area %>のお天気</div>
+      <div class="card-header weather_area"><%= @mygroup.area %>のお天気</div>
       <div class="card-body weather">
         <div class="row">
-        <div class="col-5">
+        <div class="col-5 weather_img_txt">
         <% weather = @weather_main %>
         <% if weather == 'Clear' %>
           <img src="/weather/clear sky.png" alt=""><br><%= '晴れ' %>

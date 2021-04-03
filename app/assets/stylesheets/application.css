@@ -13,6 +13,18 @@
  *= require_tree .
  *= require_self
  */
+* {
+	float: none;
+	position: static;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+} 
+ 
+ 
+
 html {
     /* ルート要素の文字サイズを変更する */
     /*font-size: 14px;*/
@@ -37,11 +49,27 @@ html {
  header {
   background-color: #389696;
  }
-.top-title p{
- font-size: 7rem;
+ 
+/*タイトル・サブタイトル*/
+.top-title .title{
+ font-size: 6rem;
  font-family: Hiragino Kaku Gothic ProN;
  color: #389696;
  font-weight: bold;
+}
+.top-title span {
+ position: relative;
+ top: 45px;
+ left: 45px;
+ font-size: 1.1rem;
+ font-family: Hiragino Kaku Gothic ProN;
+ color: #389696;
+}
+@media screen and (max-width:480px) {
+ .top-title span {
+  position: relative;
+  top: 40px;
+  left: 45px;
 }
 
  .navcolor {
@@ -51,20 +79,28 @@ html {
   color: #191970;
   background-color: #afeeee;
   display: block;
-  font-size: 20px;
+  font-size: 1.25rem;
  }
 
  /*予定とかのheight*/
- .c-height {
-  height: 45px;
+ .c-height h5 {
+  margin: 0;
  }
- 
+ @media screen and (max-width:480px) {
+  .c-height {
+   padding: 5px 15px;
+  }
+  .c-height h5 {
+  margin: 0;
+  font-size: 12px;
+  }
+ }
  .calendar {
   background-color: #ffffff;
  }
-  @media (min-width: 500px) and (max-width: 600px) {
+  @media screen and (max-width:480px) {
    .textsm {
-    font-size: 11px;
+    font-size: 0.626rem;
   }
 }
 
@@ -74,17 +110,45 @@ html {
  .table-style {
   margin: -0.2rem ;
   table-layout: fixed;
-  /*font-size: 10pt;*/
-  font-size: calc(56.25% + 0.5vw);
+  font-size: 0.8rem;
+ }
+ @media screen and (max-width:480px) {
+  .table-style img {
+   width: 40%;
+  }
  }
  
  .about img {
   width: 80%;
  }
  
-  .weather img {
-  width: 70%;
+ /*Mygroup leftside*/
+ @media screen and (max-width:480px) {
+  .group-info {
+   padding: 0 12px 0 12px;
+  }
+  .group-info img {
+   width: 15%;
+  }
  }
+ 
+ /*Weather*/
+ .weather {
+  padding: 7px 10px 0 10px;
+ }
+  .weather img {
+  width: 50%;
+ }
+ @media screen and (max-width:480px) {
+  .weather_img_txt {
+   width: 25%;
+   padding: 0 0 0 50px;
+  }
+ }
+ .weather_area {
+  padding: 3px 15px;
+ }
+ 
 /*グループ一覧とこ*/
  .mg-left {
   margin-left: 20px;
@@ -120,6 +184,8 @@ html {
   display: inline;
   text-align: right;
  }
+ 
+ 
 /*入力必須赤字*/
  .form-color {
   color: red;
