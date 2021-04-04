@@ -9,11 +9,11 @@
   </aside>
   
   <aside class="col-sm-9 mt-3 textsm">
-    <div class="card">
+    <!--PC表示-->
+    <div class="card pc_area">
         <div class="card-header c-height">
           <h5 class="card-title text-center">予定一覧</h5>
         </div>
-        
           <table class="table table-style">
             <thead>
               <tr>
@@ -30,8 +30,36 @@
               <tr>
                 <td><%= plan.start_time.strftime("%Y-%m-%d") %>/<%= plan.plan_at.strftime("%H:%M") %></td>
                 <td><%= User.find(plan.user_id).name %></td>
-                <td><%= link_to plan.title, plan_path(plan) %></td>
+                <td><%= link_to plan.title.truncate(15, omission: '…'), plan_path(plan) %></td>
                 <td><%= plan.content.truncate(15, omission: '…') %></td>
+                <td class="text-center"><%= render 'attendances/attend_button', plan: plan %></td>
+                <td class="text-center"><%= Attendance.where(plan_id: plan.id).count %></td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+    </div>
+    <!--Phone表示-->
+    <div class="card phone_area">
+        <div class="card-header c-height">
+          <h5 class="card-title text-center">予定一覧</h5>
+        </div>
+          <table class="table table-style">
+            <thead>
+              <tr>
+                <th style="width:30%">予定日時</th>
+                <th style="width:15%">登録者</th>
+                <th style="width:20%">タイトル</th>
+                <th style="width:20%">出欠状況</th>
+                <th style="width:15%">人数</th>
+              </tr>
+            </thead>
+            <% @plans.each do |plan| %>
+            <tbody>
+              <tr>
+                <td><%= plan.start_time.strftime("%Y-%m-%d") %>/<%= plan.plan_at.strftime("%H:%M") %></td>
+                <td><%= User.find(plan.user_id).name %></td>
+                <td><%= link_to plan.title.truncate(10, omission: '…'), plan_path(plan) %></td>
                 <td class="text-center"><%= render 'attendances/attend_button', plan: plan %></td>
                 <td class="text-center"><%= Attendance.where(plan_id: plan.id).count %></td>
               </tr>

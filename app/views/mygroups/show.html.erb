@@ -43,11 +43,11 @@
   </aside>
   
   <aside class="col-sm-9 textsm mt-3">
-    <div class="card">
+    <!--PC表示-->
+    <div class="card pc_area">
         <div class="card-header c-height">
           <h5 class="card-title text-center">お知らせ一覧</h5>
         </div>
-        
           <table class="table table-style">
             <thead>
               <tr>
@@ -68,9 +68,32 @@
             </tbody>
             <% end %>
             <%= paginate @notices %>
-            
           </table>
-
+    </div>
+    <!--PHONE表示-->
+    <div class="card phone_area">
+        <div class="card-header c-height">
+          <h5 class="card-title text-center">お知らせ一覧</h5>
+        </div>
+          <table class="table table-style">
+            <thead>
+              <tr>
+                <th style="width:30%">投稿日時</th>
+                <th style="width:30%">投稿者</th>
+                <th style="width:40%">タイトル</th>
+              </tr>
+            </thead>
+            <% @notices.each do |notice| %>
+            <tbody>
+              <tr>
+                <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                <td><%= notice.user.name %></td>
+                <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
+              </tr>
+            </tbody>
+            <% end %>
+            <%= paginate @notices %>
+          </table>
     </div>
   </aside>
 </div>
