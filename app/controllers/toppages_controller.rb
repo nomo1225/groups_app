@@ -8,9 +8,6 @@ class ToppagesController < ApplicationController
     end
   end
   
-  def about
-  end
-  
   def terms
   end
   

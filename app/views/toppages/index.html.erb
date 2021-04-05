@@ -63,16 +63,27 @@
     </div>
   </div>
 <% else %>
+  <div class="top-main">
   <div class="center jumbotron home">
     <div class="text-center top-title">
       <span>趣味のグループ情報共有サイト</span>
-      <p class="title">Groups</p>
-      
-      
-      
-      <%= link_to signup_path, class: 'btn btn-lg btn-primary mt-5' do%>
-       <i class="far fa-hand-point-right faa-horizontal animated"></i> 新規登録はこちら
-      <% end %>
+      <p>Groups</p>
     </div>
+  </div>
+  <div class="text-center about">
+    <%= image_tag '/guestion.png' %>
+    <h4>about Groups</h4>
+    <p>Groups とは</p>
+    <p>趣味の集まりやスポーツ団体など、<br>
+        グループの情報共有サイトです。<br>
+        グループのメンバー、グループの予定、<br>
+        お知らせを共有できます。<br><p/>
+    <p class="txt-sm">※全ての機能を無料にてご利用いただけます。</p>
+  </div>
+  <div class="text-center">
+    <%= link_to signup_path, class: 'btn btn-lg btn-primary mt-5' do%>
+      <i class="far fa-hand-point-right faa-horizontal animated"></i> 新規登録はこちら
+    <% end %>
+  </div>
   </div>
 <% end %>

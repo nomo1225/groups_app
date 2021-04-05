@@ -33,8 +33,8 @@ html {
 } 
  
  .home { 
-   background:url(/main.jpg) center no-repeat; 
-   background-size: cover;
+  background:url(/main.jpg) center no-repeat; 
+  background-size: contain;
  }
  
  body {
@@ -43,18 +43,24 @@ html {
  }
  
  .container {
-    max-width: 1200px;
+  max-width: 1200px;
  }
  
  header {
   background-color: #389696;
  }
- 
-/*タイトル・サブタイトル*/
-.top-title .title{
- font-size: 6rem;
+
+/*toppage(login前)*/
+.top-main {
+ color: #248282;
  font-family: Hiragino Kaku Gothic ProN;
- color: #389696;
+}
+/*タイトル・サブタイトル*/
+.top-title {
+  padding: 50px 0;
+}
+.top-title p{
+ font-size: 6rem;
  font-weight: bold;
 }
 .top-title span {
@@ -62,14 +68,30 @@ html {
  top: 45px;
  left: 45px;
  font-size: 1.1rem;
- font-family: Hiragino Kaku Gothic ProN;
- color: #389696;
+}
+/*about*/
+.about img {
+ width:5%;
 }
 @media screen and (max-width:480px) {
+ .top-title {
+  padding: 0 0;
+ }
+ .home {
+  padding: 25px 0 70px 0;
+  margin-bottom: 5px;
+ }
+ .top-title p{
+  font-size: 45px;
+ }
  .top-title span {
   position: relative;
-  top: 40px;
-  left: 45px;
+  top: 25px;
+  left: 20px;
+  font-size: 7px;
+ }
+ .about img {
+  width:7%;
  }
 }
 
@@ -117,10 +139,6 @@ html {
   .table-style img {
    width: 40%;
   }
- }
- 
- .about img {
-  width: 80%;
  }
  
  /*Mygroup leftside*/
