@@ -38,8 +38,12 @@ html {
  }
  
  body {
-  font-family: Meiryo,Georgia;
+  /*font-family: Meiryo,Georgia;*/
+  font-family: 'Kiwi Maru', serif;
   background-color: #ffffff;
+ }
+ body h1,h2,h3,h4,h5,h6 {
+  font-family: 'Yusei Magic', sans-serif;
  }
  
  .container {
@@ -57,11 +61,11 @@ html {
 }
 /*新規登録ほかbtn*/
 .new-btn {
- background-color: #248282;
- opacity: 0.7;
+ background-color: white;
+ opacity: 0.8;
+ width: 60%;
 }
 .new-btn:hover {
- background-color: #248282;
  opacity: 1;
 }
 .join-btn {
@@ -98,6 +102,10 @@ html {
  font-size: 1.1rem;
 }
 /*about*/
+.about {
+ background:url(/about.jpg) center no-repeat; 
+  background-size: cover;
+}
 .about img {
  width:5%;
 }
