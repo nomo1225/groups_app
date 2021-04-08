@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  require 'securerandom'
+  require 'securerandom' #乱数発生器サポート(token)
   
-  before_action :require_user_logged_in, except: [:new, :create, :forget, :forgetmail, :resetpass, :runresetpass]
+  before_action :require_user_logged_in, except: [:new, :create, :forget, :forgetmail, :resetpass, :runresetpass] #ログイン不要
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :identification, only: [:edit, :update, :destroy]
   
@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
   
+  #パスワードリセット
   def forget
     @user = User.new
   end

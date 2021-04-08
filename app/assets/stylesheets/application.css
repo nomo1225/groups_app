@@ -337,3 +337,58 @@ html {
     display:block;
    }
 }
+
+/*topサンプルイメージ*/
+
+.arrow_box{
+ margin: 1.1rem;
+ position:relative;
+ width:80%;
+ height:1.5rem;
+ background:#128A3D;
+ text-align:center;
+ border:2px solid #024C24;
+ color:#FFFFFF;
+ font-size: 0.85rem;
+ border-radius:1.25rem;
+ -webkit-border-radius:0.875rem;
+ -moz-border-radius:0.875rem;
+}
+.arrow_box:after,
+.arrow_box:before{
+ border: solid transparent;
+ content:'';
+ height:0;
+ width:0;
+ pointer-events:none;
+ position:absolute;
+ top:100%;
+ left:25%;
+}
+.arrow_box:after{
+ border-color: rgba(18, 138, 61, 0);
+ border-top-width:1rem;
+ border-bottom-width:1rem;
+ border-left-width:1rem;
+ border-right-width:1rem;
+ margin-left: -1rem;
+ border-top-color:#128A3D;
+}
+.arrow_box:before{
+ border-color: rgba(2, 76, 36, 0);
+ border-top-width:1rem;
+ border-bottom-width:1rem;
+ border-left-width:1rem;
+ border-right-width:1rem;
+ margin-left: -1rem;
+ margin-top: 0.125rem;
+ border-top-color:#024C24;
+}
+.sample_image {
+ width: 90%;
+ margin: 1.1rem 1rem;
+}
+.sample {
+ float: left;
+ width: 25%;
+}

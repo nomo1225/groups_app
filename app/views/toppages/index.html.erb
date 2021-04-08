@@ -13,6 +13,7 @@
             <% end %>
           </div>
       </div>
+      
       <div class="d-flex flex-column mt-2">
         <%= link_to 'グループに参加する', join_path(@user), class: "btn btn-primary join-btn mt-2" %>
         <%= link_to 'グループを作成する', new_mygroup_path, class: "btn btn-primary make-btn mt-2" %>
@@ -23,7 +24,6 @@
       <div class="card">
         <div class="card-header c-height">
           <h5 class="card-title text-center">参加グループ一覧<span class="mg-left"><i class="far fa-flag"></i>あなたの作成したグループ</span></h5>
-          
         </div>
         <table class="table table-style">
           <thead>
@@ -70,6 +70,7 @@
         <p>Groups</p>
       </div>
     </div>
+    
     <div class="text-center about">
       <%= image_tag '/guestion.png' %>
       <h4>about Groups</h4>
@@ -80,6 +81,26 @@
         お知らせを共有できます。<br><p/>
       <p class="txt-sm">※全ての機能を無料にてご利用いただけます。</p>
     </div>
+    
+    <div class="about-images">
+      <div class="sample">
+        <div class='arrow_box'>参加グループ</div>
+        <div class="sample_image"><img src="/join_groups.jpg" alt=""></div>
+      </div>
+      <div class="sample">
+        <div class='arrow_box'>お知らせ</div>
+        <div class="sample_image"><img src="/notices.jpg" alt=""></div>
+      </div>
+      <div class="sample">
+        <div class='arrow_box'>メンバー</div>
+        <div class="sample_image"><img src="/members.jpg" alt=""></div>
+      </div>
+      <div class="sample">
+        <div class='arrow_box'>予定</div>
+        <div class="sample_image"><img src="/plans.jpg" alt=""></div>
+      </div>
+    </div>
+    
     <div class="text-center">
       <%= link_to signup_path, class: 'btn btn-lg mt-5 new-btn' do%>
         <%= image_tag '/newbtn.jpg' %>
