@@ -1,0 +1,27 @@
+<div class="text-center">
+  <h1>打合せ項目登録</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @discussion, local: true) do |f| %>
+       <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :title, 'タイトル(30字以内)' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :content, '内容(150字以内)' %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :mygroup_id, value: @mygroup_id %>
+      
+      <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

@@ -7,6 +7,7 @@
     
     <div class="d-flex flex-column mt-2">
       <%= link_to '新規お知らせ登録', new_mygroup_notice_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2" %>
+      <%= link_to '新規打合せ項目登録', new_mygroup_discussion_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2" %>
       <% unless current_user.id == @mygroup.user_id %>
         <%= link_to '退会する', relationship_path(mygroup_id: @mygroup.id), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-sm btn-outline-danger btn-block w-50 mx-auto mt-2' %>
       <% end %>
@@ -70,6 +71,31 @@
             <%= paginate @notices %>
           </table>
     </div>
+    
+    <div class="card pc_area mt-3">
+        <div class="card-header c-height">
+          <h5 class="card-title text-center">打合せ項目一覧</h5>
+        </div>
+          <table class="table table-style">
+            <thead>
+              <tr>
+                <th style="width:25%">投稿日時</th>
+                <th style="width:30%">投稿者</th>
+                <th style="width:45%">タイトル</th>
+              </tr>
+            </thead>
+            <% @discussions.each do |discussion| %>
+            <tbody>
+              <tr>
+                <td><%= discussion.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                <td><%= discussion.user.name %></td>
+                <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
+              </tr>
+            </tbody>
+            <% end %>
+            <%= paginate @discussions %>
+          </table>
+    </div>
     <!--PHONE表示-->
     <div class="card phone_area">
         <div class="card-header c-height">
@@ -93,6 +119,31 @@
             </tbody>
             <% end %>
             <%= paginate @notices %>
+          </table>
+    </div>
+    
+    <div class="card phone_area mt-2">
+        <div class="card-header c-height">
+          <h5 class="card-title text-center">打合せ項目一覧</h5>
+        </div>
+          <table class="table table-style">
+            <thead>
+              <tr>
+                <th style="width:30%">投稿日時</th>
+                <th style="width:30%">投稿者</th>
+                <th style="width:40%">タイトル</th>
+              </tr>
+            </thead>
+            <% @discussions.each do |discussion| %>
+            <tbody>
+              <tr>
+                <td><%= discussion.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                <td><%= discussion.user.name %></td>
+                <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
+              </tr>
+            </tbody>
+            <% end %>
+            <%= paginate @discussions %>
           </table>
     </div>
   </aside>

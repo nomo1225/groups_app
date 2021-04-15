@@ -30,4 +30,5 @@ class Mygroup < ApplicationRecord
    has_many :plans, dependent: :destroy
    has_many :relationships, dependent: :destroy
    has_many :members, through: :relationships, source: :user, dependent: :destroy
+   has_many :discussions, dependent: :destroy
 end

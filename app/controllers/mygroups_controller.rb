@@ -25,7 +25,8 @@ class MygroupsController < ApplicationController
   end
 
   def show
-    @notices = @mygroup.notices.order(id: :desc).page(params[:page]).per(15)
+    @notices = @mygroup.notices.order(id: :desc).page(params[:page]).per(5)
+    @discussions = @mygroup.discussions.order(id: :desc).page(params[:page]).per(5)
     
     #Mygroupの天気情報
     unless @mygroup.area == "---"

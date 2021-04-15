@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :mygroups,  only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :notices, only: [:new]
     resources :plans,   only: [:new]
+    resources :discussions, only: [:new]
+    resources :opinions,    only: [:new]
   end
   resources :relationships, only: [:create, :destroy]
   resources :notices,       only: [:create, :show, :edit, :update, :destroy]
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
   end
   resources :attendances, only: [:create, :destroy]
   resources :inquiry,     only: [:new, :create]
+  resources :discussions, only: [:create, :show, :edit, :update, :destroy]
+  resources :opinions,    only: [:create, :index, :destroy]
   
   get '/sitemap', to: redirect("https://s3-ap-northeast-1.amazonaws.com/#{ENV['S3_BUCKET_KEY']}/sitemap.xml.gz")
 end

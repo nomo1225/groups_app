@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_064542) do
+ActiveRecord::Schema.define(version: 2021_04_14_081422) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2021_04_02_064542) do
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "discussions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.bigint "mygroup_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content"
+    t.index ["mygroup_id"], name: "index_discussions_on_mygroup_id"
+    t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
   create_table "mygroups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -51,6 +62,18 @@ ActiveRecord::Schema.define(version: 2021_04_02_064542) do
     t.datetime "updated_at", null: false
     t.index ["mygroup_id"], name: "index_notices_on_mygroup_id"
     t.index ["user_id"], name: "index_notices_on_user_id"
+  end
+
+  create_table "opinions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "mygroup_id"
+    t.bigint "discussion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_opinions_on_discussion_id"
+    t.index ["mygroup_id"], name: "index_opinions_on_mygroup_id"
+    t.index ["user_id"], name: "index_opinions_on_user_id"
   end
 
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,9 +120,14 @@ ActiveRecord::Schema.define(version: 2021_04_02_064542) do
 
   add_foreign_key "attendances", "plans"
   add_foreign_key "attendances", "users"
+  add_foreign_key "discussions", "mygroups"
+  add_foreign_key "discussions", "users"
   add_foreign_key "mygroups", "users"
   add_foreign_key "notices", "mygroups"
   add_foreign_key "notices", "users"
+  add_foreign_key "opinions", "discussions"
+  add_foreign_key "opinions", "mygroups"
+  add_foreign_key "opinions", "users"
   add_foreign_key "plans", "mygroups"
   add_foreign_key "plans", "users"
   add_foreign_key "relationships", "mygroups"

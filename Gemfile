@@ -70,11 +70,11 @@ gem 'simple_calendar'
 
 gem 'pry-byebug', group: :development
 
-# production 環境において、pg という Gem を使用する
+# production 環境専用の設定
 group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
-  gem 'rails_12factor', '0.0.2'
-  gem 'fog-aws'
+  gem 'pg', '>= 0.18', '< 2.0' #PostgreSQLにアクセスするためのライブラリ
+  gem 'rails_12factor', '0.0.2'  #RailsアプリケーションをHerokuで動作をさせる
+  gem 'fog-aws'  #`fog`のモジュール(AWS用)
 end
 
 gem 'sitemap_generator'

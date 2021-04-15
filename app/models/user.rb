@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :attendances, dependent: :destroy
   has_many :attends, through: :attendances, source: :plan, dependent: :destroy
+  has_many :discussions, dependent: :destroy
+  has_many :opinions, dependent: :destroy
   
   def join(mygroup)
     self.relationships.find_or_create_by(mygroup_id: mygroup.id)

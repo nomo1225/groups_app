@@ -1,0 +1,28 @@
+<div class="text-center">
+  <h2>「<%= @discussion.title %>」</h2>
+</div>
+<div class="text-center">
+  <p>投稿者:<%= @discussion.user.name %>&nbsp;&nbsp; 投稿日時:<%= @discussion.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  <p>内容：<%= @discussion.content %></p>
+</div>
+
+<div class="text-center">
+  <%= link_to '意見を登録', new_mygroup_opinion_path(mygroup_id: @mygroup.id, discussion_id: @discussion.id),class: "btn btn-primary make-btn mt-2" %>
+</div>
+<% if @opinions %>
+  <%= render 'opinions/index' %>
+<% end %>
+
+<div class="d-flex flex-column mt-2">
+  <% if @discussion.user_id == current_user.id %>
+    <div class="btn btn-outline-info mx-auto  btn-sm mb-1">
+      <%= link_to '編集する', edit_discussion_url(mygroup_id: @discussion.mygroup.id)%>
+    </div>
+    <div class="btn btn-outline-danger mx-auto  btn-sm mb-1">
+      <%= link_to '削除する', @discussion, method: :delete, data: { confirm: '本当に削除しますか？' }%>
+    </div>
+  <% end %>
+  <div class="btn btn-outline-secondary mx-auto  btn-sm">
+    <%= link_to 'グループトップに戻る', mygroup_path(@discussion.mygroup_id) %>
+  </div>
+</div>
