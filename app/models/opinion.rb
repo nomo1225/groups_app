@@ -4,4 +4,5 @@ class Opinion < ApplicationRecord
   belongs_to :discussion
   
   validates :content, presence: true, length: { maximum: 100 }
+  
 end

@@ -21,26 +21,27 @@ class User < ApplicationRecord
   has_many :attends, through: :attendances, source: :plan, dependent: :destroy
   has_many :discussions, dependent: :destroy
   has_many :opinions, dependent: :destroy
-  
-  def join(mygroup)
+
+  def join(mygroup) #グループに参加
     self.relationships.find_or_create_by(mygroup_id: mygroup.id)
   end
-  def secession(mygroup)
+  def secession(mygroup) #グループから退会
     relationship = self.relationships.find_by(mygroup_id: mygroup.id)
     relationship.destroy if relationship
   end
-  def joining?(mygroup)
+  def joining?(mygroup) #グループに参加済みか
     self.joined_mygroups.include?(mygroup)
   end
   
-  def attend(plan)
+  def attend(plan) #予定に参加
     self.attendances.find_or_create_by(plan_id: plan.id)
   end
-  def unattend(plan)
+  def unattend(plan) #予定に不参加
     attendance = self.attendances.find_by(plan_id: plan.id)
     attendance.destroy if attendance
   end
-  def attending?(plan)
+  def attending?(plan) #予定に参加済みか
     self.attends.include?(plan)
   end
+
 end

@@ -30,6 +30,7 @@ class OpinionsController < ApplicationController
 
   def index
     @opinions = Opinion.where(discussion_id: params[:id]).order(id: :desc).page(params[:page]).per(5)
+    @agree = Agree.new
   end
 
   def destroy
