@@ -45,106 +45,137 @@
   
   <aside class="col-sm-9 textsm mt-3">
     <!--PC表示-->
-    <div class="card pc_area">
-        <div class="card-header c-height">
-          <h5 class="card-title text-center">お知らせ一覧</h5>
-        </div>
-          <table class="table table-style">
-            <thead>
-              <tr>
-                <th style="width:19%">投稿日時</th>
-                <th style="width:15%">投稿者</th>
-                <th style="width:30%">タイトル</th>
-                <th style="width:45%">内容</th>
-              </tr>
-            </thead>
-            <% @notices.each do |notice| %>
-            <tbody>
-              <tr>
-                <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-                <td><%= notice.user.name %></td>
-                <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
-                <td><%= notice.content.truncate(35, omission: '…') %></td>
-              </tr>
-            </tbody>
-            <% end %>
-            <%= paginate @notices %>
-          </table>
-    </div>
-    
-    <div class="card pc_area mt-3">
-        <div class="card-header c-height">
-          <h5 class="card-title text-center">打合せ項目一覧</h5>
-        </div>
-          <table class="table table-style">
-            <thead>
-              <tr>
-                <th style="width:25%">投稿日時</th>
-                <th style="width:30%">投稿者</th>
-                <th style="width:45%">タイトル</th>
-              </tr>
-            </thead>
-            <% @discussions.each do |discussion| %>
-            <tbody>
-              <tr>
-                <td><%= discussion.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-                <td><%= discussion.user.name %></td>
-                <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
-              </tr>
-            </tbody>
-            <% end %>
-            <%= paginate @discussions %>
-          </table>
-    </div>
+      <div class="card pc_area">
+        <% if @notices.presence %>
+          <div class="card-header c-height">
+            <h5 class="card-title text-center">お知らせ一覧</h5>
+          </div>
+            <table class="table table-style">
+              <thead>
+                <tr>
+                  <th style="width:19%">投稿日時</th>
+                  <th style="width:15%">投稿者</th>
+                  <th style="width:30%">タイトル</th>
+                  <th style="width:45%">内容</th>
+                </tr>
+              </thead>
+              <% @notices.each do |notice| %>
+              <tbody>
+                <tr>
+                  <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td><%= notice.user.name %></td>
+                  <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
+                  <td><%= notice.content.truncate(35, omission: '…') %></td>
+                </tr>
+              </tbody>
+              <% end %>
+              <%= paginate @notices %>
+            </table>
+        <% else %>
+          <div class="text-center mt-3">
+            <p><i class="far fa-lightbulb"></i>【新規お知らせ登録】ボタンからお知らせを登録できます。</p>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="card pc_area mt-3">
+        <% if @discussions.presence %>
+          <div class="card-header c-height">
+            <h5 class="card-title text-center">打合せ項目一覧</h5>
+          </div>
+            <table class="table table-style">
+              <thead>
+                <tr>
+                  <th style="width:25%">投稿日時</th>
+                  <th style="width:30%">投稿者</th>
+                  <th style="width:45%">タイトル</th>
+                </tr>
+              </thead>
+              <% @discussions.each do |discussion| %>
+              <tbody>
+                <tr>
+                  <td><%= discussion.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td><%= discussion.user.name %></td>
+                  <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
+                </tr>
+              </tbody>
+              <% end %>
+              <%= paginate @discussions %>
+            </table>
+        <% else %>
+          <div class="pc_area mt-3">
+            <div class="text-center">
+              <p><i class="far fa-lightbulb"></i>【新規打合せ項目登録】ボタンから打合せ項目を登録できます。</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
     <!--PHONE表示-->
-    <div class="card phone_area">
-        <div class="card-header c-height">
-          <h5 class="card-title text-center">お知らせ一覧</h5>
-        </div>
-          <table class="table table-style">
-            <thead>
-              <tr>
-                <th style="width:30%">投稿日時</th>
-                <th style="width:30%">投稿者</th>
-                <th style="width:40%">タイトル</th>
-              </tr>
-            </thead>
-            <% @notices.each do |notice| %>
-            <tbody>
-              <tr>
-                <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-                <td><%= notice.user.name %></td>
-                <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
-              </tr>
-            </tbody>
-            <% end %>
-            <%= paginate @notices %>
-          </table>
-    </div>
+      <div class="card phone_area">
+        <% if @notices.presence %>
+          <div class="card-header c-height">
+            <h5 class="card-title text-center">お知らせ一覧</h5>
+          </div>
+            <table class="table table-style">
+              <thead>
+                <tr>
+                  <th style="width:30%">投稿日時</th>
+                  <th style="width:30%">投稿者</th>
+                  <th style="width:40%">タイトル</th>
+                </tr>
+              </thead>
+              <% @notices.each do |notice| %>
+              <tbody>
+                <tr>
+                  <td><%= notice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td><%= notice.user.name %></td>
+                  <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
+                </tr>
+              </tbody>
+              <% end %>
+              <%= paginate @notices %>
+            </table>
+        <% else %>
+          <div class="phone_area">
+            <div class="text-center mt-2">
+              <p><i class="far fa-lightbulb"></i>【新規お知らせ登録】ボタンからお知らせを登録できます。</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     
-    <div class="card phone_area mt-2">
-        <div class="card-header c-height">
-          <h5 class="card-title text-center">打合せ項目一覧</h5>
-        </div>
-          <table class="table table-style">
-            <thead>
-              <tr>
-                <th style="width:30%">投稿日時</th>
-                <th style="width:30%">投稿者</th>
-                <th style="width:40%">タイトル</th>
-              </tr>
-            </thead>
-            <% @discussions.each do |discussion| %>
-            <tbody>
-              <tr>
-                <td><%= discussion.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-                <td><%= discussion.user.name %></td>
-                <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
-              </tr>
-            </tbody>
-            <% end %>
-            <%= paginate @discussions %>
-          </table>
-    </div>
+      <div class="card phone_area mt-2">
+        <% if @discussions.presence %>
+          <div class="card-header c-height">
+            <h5 class="card-title text-center">打合せ項目一覧</h5>
+          </div>
+            <table class="table table-style">
+              <thead>
+                <tr>
+                  <th style="width:30%">投稿日時</th>
+                  <th style="width:30%">投稿者</th>
+                  <th style="width:40%">タイトル</th>
+                </tr>
+              </thead>
+              <% @discussions.each do |discussion| %>
+              <tbody>
+                <tr>
+                  <td><%= discussion.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td><%= discussion.user.name %></td>
+                  <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
+                </tr>
+              </tbody>
+              <% end %>
+              <%= paginate @discussions %>
+            </table>
+        <% else %>
+          <div class="phone_area mt-2">
+            <div class="text-center">
+              <p><i class="far fa-lightbulb"></i>【新規打合せ項目登録】ボタンから打合せ項目を登録できます。</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
   </aside>
 </div>
