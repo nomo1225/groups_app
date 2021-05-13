@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   
   def new
     @account = Account.new
+    @mygroup_id = params[:mygroup_id]
     @mygroup = Mygroup.find(params[:mygroup_id])
     unless @mygroup.members.exists?(id: current_user.id)
       flash[:danger] = '権限がありません。'
