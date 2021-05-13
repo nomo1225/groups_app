@@ -21,7 +21,7 @@
             <% @members.each do |member| %>
               <tbody>
                 <tr class="text-center">
-                  <td><img class="rounded img-fluid" src="<%= member.image.url %>" alt="" width="40" height="40"></td>
+                  <td><img class="rounded img-fluid" src="<%= member.image.url %>" alt="メンバーアイコン" width="40" height="40"></td>
                   <td><%= member.name %></td>
                   <td><%= member.join(@mygroup).created_at.strftime("%Y-%m-%d") %></td>
                 </tr>

@@ -6,7 +6,7 @@
             <h3 class="card-title mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h3>
           </div>
           <div class="card-body border-info">
-            <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="" width="70" height="70">
+            <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="ユーザーアイコン" width="70" height="70">
             <h4><%= @user.name %></h4>
             <% if @user.id == current_user.id %>
               <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
@@ -41,7 +41,7 @@
           <% @made_mygroups.each do |mygroup| %>
           <tbody>
             <tr>
-              <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="50" height="50"></td>
+              <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
               <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name, mygroup_path(mygroup) %></td>              
               <td><%= mygroup.area %></td>
               <td><%= mygroup.category %></td>
@@ -53,7 +53,7 @@
             <% if mygroup.user_id != current_user.id %>
               <tbody>
                 <tr>
-                  <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="" width="50" height="50"></td>
+                  <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
                   <td><%= link_to mygroup.name, mygroup_path(mygroup) %></td>
                   <td><%= mygroup.area %></td>
                   <td><%= mygroup.category %></td>
@@ -89,19 +89,19 @@
     <div class="about-images">
       <div class="sample">
         <div class='arrow_box'>参加グループ</div>
-        <div class="sample_image"><img src="/join_groups.jpg" alt=""></div>
+        <div class="sample_image"><img src="/join_groups.jpg" alt="参加グループ一覧サンプル"></div>
       </div>
       <div class="sample">
         <div class='arrow_box'>お知らせ</div>
-        <div class="sample_image"><img src="/notices.jpg" alt=""></div>
+        <div class="sample_image"><img src="/notices.jpg" alt="お知らせサンプル"></div>
       </div>
       <div class="sample">
         <div class='arrow_box'>メンバー</div>
-        <div class="sample_image"><img src="/members.jpg" alt=""></div>
+        <div class="sample_image"><img src="/members.jpg" alt="メンバー一覧サンプル"></div>
       </div>
       <div class="sample">
         <div class='arrow_box'>予定</div>
-        <div class="sample_image"><img src="/plans.jpg" alt=""></div>
+        <div class="sample_image"><img src="/plans.jpg" alt="予定サンプル"></div>
       </div>
     </div>
     
