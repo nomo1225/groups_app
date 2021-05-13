@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post 'forget', to:         'users#forgetmail'
   get 'reset_password', to:  'users#resetpass'
   post 'reset_password', to: 'users#runresetpass'
+  post 'year_total', to:     'accounts#year_total'
+  get 'total', to:           'accounts#total', as: 'total'
   
   resources :users, only: [:index, :create, :edit, :update, :destroy]
   
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
     resources :plans,   only: [:new]
     resources :discussions, only: [:new]
     resources :opinions,    only: [:new]
+    resources :accounts, only: [:new]
   end
   resources :relationships, only: [:create, :destroy]
   resources :notices,       only: [:create, :show, :edit, :update, :destroy]
@@ -38,6 +41,7 @@ Rails.application.routes.draw do
   resources :inquiry,     only: [:new, :create]
   resources :discussions, only: [:create, :show, :edit, :update, :destroy]
   resources :opinions,    only: [:create, :index, :destroy]
+  resources :accounts,    only: [:create, :show, :index, :edit, :update, :destroy]
   
   get '/sitemap', to: redirect("https://s3-ap-northeast-1.amazonaws.com/#{ENV['S3_BUCKET_KEY']}/sitemap.xml.gz")
 end

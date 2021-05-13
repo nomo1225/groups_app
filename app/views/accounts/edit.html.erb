@@ -1,0 +1,44 @@
+<div class="text-center">
+  <h1>会計情報登録</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @account, local: true) do |f| %>
+       <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :processed_date, '処理日' %>
+        <%= f.date_field :processed_date, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.radio_button :treasurer, :income %>
+        <%= f.label :treasurer, '収入' %>
+        <%= f.radio_button :treasurer, :expense %>
+        <%= f.label :treasurer, '支出' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :to_whom, '受領元/支払先' %>
+        <%= f.text_field :to_whom, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content, '摘要' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :fee, '金額' %>
+        <%= f.number_field :fee, class: 'form-control' %>
+      </div>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :mygroup_id, value: @account.mygroup_id %>
+      
+      <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

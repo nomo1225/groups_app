@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_073230) do
+ActiveRecord::Schema.define(version: 2021_05_10_025445) do
+
+  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "processed_date"
+    t.string "to_whom"
+    t.string "content"
+    t.integer "fee"
+    t.bigint "user_id"
+    t.bigint "mygroup_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "treasurer"
+    t.index ["mygroup_id"], name: "index_accounts_on_mygroup_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -118,6 +132,8 @@ ActiveRecord::Schema.define(version: 2021_04_16_073230) do
     t.integer "location_id"
   end
 
+  add_foreign_key "accounts", "mygroups"
+  add_foreign_key "accounts", "users"
   add_foreign_key "attendances", "plans"
   add_foreign_key "attendances", "users"
   add_foreign_key "discussions", "mygroups"

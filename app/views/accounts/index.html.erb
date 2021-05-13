@@ -1,0 +1,127 @@
+<div class="text-center">
+  <h1><i class="fas fa-yen-sign"></i> 会計情報一覧</h1>
+  <p>※処理日の新しい順に表示しています。</p>
+</div>
+<div class="add_acount_button flex-column">
+  <%= link_to '会計情報登録', new_mygroup_account_path(mygroup_id: @mygroup.id), class: "btn btn-primary make-btn" %>
+</div>
+
+<div class="show_year mt-2">
+  <%= form_with url: year_total_path do |f| %>
+    <%= f.select("select_year", (Time.zone.now.year - 5)..(Time.zone.now.year)) %>
+    <%= f.label '年分を' %>
+    <%= f.hidden_field :mygroup_id, value: @mygroup.id %>
+    <%= f.submit('表示') %>
+  <% end %>
+</div>
+
+
+<!--PC表示-->
+<div class="pc_area">
+  <% if @accounts.present? %>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th style="width:30%" scope="col"></th>
+          <th style="width:20%" scope="col">【収支トータル】</th>
+          <th style="width:15%" scope="col">収入計 <%= @income.to_s(:delimited) %></th>
+          <th style="width:15%" scope="col">支出計 <span class="expense"><%= @expense.to_s(:delimited) %></span></th>
+          <% if @total <=0 %>
+            <th style="width:15%" scope="col">合計 <span class="expense"><%= (@total).to_s(:delimited) %></span></th>
+          <% else %>
+            <th style="width:15%" scope="col">合計 <%= (@total).to_s(:delimited) %></th>
+          <% end %>
+        </tr>
+      </thead>
+    </table>
+    <table class="table table-sm">
+      <thead>
+       <tr>
+          <th style="width:15%" scope="col">処理日</th>
+          <th style="width:10%" scope="col">収入 / 支出</th>
+          <th style="width:25%" scope="col">受領元 / 支払先</th>
+          <th style="width:25%" scope="col">摘要</th>
+          <th style="width:25%" scope="col">金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @accounts.each do |account| %>
+          <tr>
+            <td><%= account.processed_date %></td>
+            <% if account.treasurer == 'income' %>
+              <td>(<i class="fas fa-plus"></i>)収入</td>
+            <% else %>
+              <td>(<i class="fas fa-minus expense"></i>)支出</td>
+            <% end %>
+            <td><%= account.to_whom.truncate(10, omission: '…') %></td>
+            <td><%= link_to account.content.truncate(11, omission: '…'), account_path(account) %></td>
+            <% if account.treasurer == 'income' %>
+              <td><%= account.fee.to_s(:delimited) %></td>
+            <% else %>
+              <td class="expense"><%= account.fee.to_s(:delimited) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <%= paginate @accounts %>
+  <% else %>
+    <i class="far fa-hand-point-up"></i>「会計情報登録」ボタンから登録できます。
+  <% end %>
+</div>
+
+<!--PHONE表示-->
+<div class="phone_area">
+  <% if @accounts.present? %>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th style="width:10%" scope="col"></th>
+          <th style="width:40%" scope="col">【収支トータル】</th>
+          <th style="width:20%" scope="col">収入計 <%= @income.to_s(:delimited) %></th>
+          <th style="width:20%" scope="col">支出計 <span class="expense"><%= @expense.to_s(:delimited) %></span></th>
+          <% if @total <=0 %>
+            <th style="width:20%" scope="col">合計 <span class="expense"><%= (@total).to_s(:delimited) %></span></th>
+          <% else %>
+            <th style="width:20%" scope="col">合計 <%= (@total).to_s(:delimited) %></th>
+          <% end %>
+        </tr>
+      </thead>
+    </table>
+    <table class="table table-sm mt-3">
+      <thead>
+       <tr>
+          <th style="width:25%" scope="col">処理日</th>
+          <th style="width:20%" scope="col">収入 / 支出</th>
+          <th style="width:35%" scope="col">摘要</th>
+          <th style="width:20%" scope="col">金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @accounts.each do |account| %>
+          <tr>
+            <td><%= account.processed_date %></td>
+            <% if account.treasurer == 'income' %>
+              <td>(<i class="fas fa-plus"></i>)収入</td>
+            <% else %>
+              <td>(<i class="fas fa-minus expense"></i>)支出</td>
+            <% end %>
+            <td><%= link_to account.content.truncate(8, omission: '…'), account_path(account) %></td>
+            <% if account.treasurer == 'income' %>
+              <td><%= account.fee.to_s(:delimited) %></td>
+            <% else %>
+              <td class="expense"><%= account.fee.to_s(:delimited) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @accounts %>
+  <% else %>
+    <i class="far fa-hand-point-up"></i>「会計情報登録」ボタンから登録できます。
+  <% end %>
+</div>
+
+
+<%= link_to 'グループトップに戻る', mygroup_path(@mygroup), class: "btn btn-primary mt-2" %>

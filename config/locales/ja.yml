@@ -22,6 +22,12 @@ ja:
         content: 内容
         start_time: 予定日
         plan_at: 予定時間
+      account:
+        processed_date: 処理日
+        treasurer: 収支
+        to_whom: 受領元/支払先
+        content: 摘要
+        fee: 金額
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

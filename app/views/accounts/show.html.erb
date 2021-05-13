@@ -1,0 +1,64 @@
+<div class="text-center">
+  <h1>会計情報詳細</h1>
+</div>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div class="text-center">処理日</div>
+      </th>
+      <td><%= @account.processed_date.strftime("%Y-%m-%d") %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">登録者</div>
+      </th>
+      <td><%= @account.user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">収入 / 支出</div>
+      </th>
+      <td>
+        <% if @account.treasurer == 'income' %>
+          (<i class="fas fa-plus"></i>)収入
+        <% else %>
+          (<i class="fas fa-minus"></i>)支出
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">受領元 / 支払先</div>
+      </th>
+      <td><%= @account.to_whom %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">摘要</div>
+      </th>
+      <td><%= @account.content %></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">金額</div>
+      </th>
+      <td><%= @account.fee.to_s(:delimited) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex flex-column mt-2">
+  <% if @account.user_id == current_user.id %>
+    <div class="btn btn-outline-info mx-auto  btn-sm mb-1">
+      <%= link_to '編集する', edit_account_url(mygroup_id: @account.mygroup.id)%>
+    </div>
+    <div class="btn btn-outline-danger mx-auto  btn-sm mb-1">
+      <%= link_to '削除する', @account, method: :delete, data: { confirm: '本当に削除しますか？' }%>
+    </div>
+  <% end %>
+  <div class="btn btn-outline-secondary mx-auto  btn-sm">
+    <%= link_to '会計情報に戻る', accounts_path(mygroup_id: @account.mygroup_id) %>
+  </div>
+</div>

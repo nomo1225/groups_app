@@ -79,3 +79,5 @@ end
 
 gem 'sitemap_generator'
 gem 'aws-sdk'
+
+gem 'by_star', git: "git://github.com/radar/by_star"  #日付カラムでレコードを絞り込む

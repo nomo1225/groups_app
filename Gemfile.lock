@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/radar/by_star
+  revision: f3412a7ffb015df7ced6aa662a53a53e081611a0
+  specs:
+    by_star (4.0.0)
+      activesupport (>= 3.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -1302,6 +1309,7 @@ DEPENDENCIES
   aws-sdk
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
+  by_star!
   byebug
   carrierwave
   coffee-rails (~> 4.2)

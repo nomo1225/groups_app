@@ -15,8 +15,12 @@
       </div>
       
       <div class="d-flex flex-column mt-2">
-        <%= link_to 'グループに参加する', join_path(@user), class: "btn btn-primary join-btn mt-2" %>
-        <%= link_to 'グループを作成する', new_mygroup_path, class: "btn btn-primary make-btn mt-2" %>
+        <%= link_to join_path(@user), class: "btn btn-primary join-btn mt-2" do %>
+          <i class="fas fa-sign-in-alt"></i> グループに参加する
+        <% end %>
+        <%= link_to new_mygroup_path, class: "btn btn-primary make-btn mt-2" do %>
+          <i class="fas fa-hammer"></i> グループを作成する
+        <% end %>
       </div>
     </aside>
     

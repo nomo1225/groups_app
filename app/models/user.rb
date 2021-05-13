@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :attends, through: :attendances, source: :plan, dependent: :destroy
   has_many :discussions, dependent: :destroy
   has_many :opinions, dependent: :destroy
+  has_many :accounts, dependent: :destroy
 
   def join(mygroup) #グループに参加
     self.relationships.find_or_create_by(mygroup_id: mygroup.id)
