@@ -41,6 +41,7 @@ html {
   /*font-family: Meiryo,Georgia;*/
   font-family: 'Kiwi Maru', serif;
   background-color: #ffffff;
+  word-wrap: break-word;
  }
  body h1,h2,h3,h4,h5,h6 {
   font-family: 'Yusei Magic', sans-serif;
@@ -427,4 +428,63 @@ html {
 
 .add_items {
  justify-content: center;
+}
+
+/*打合せ機能吹き出し*/
+p.talk-text {
+ margin: 0 0 8px;
+}
+
+p.talk-text:last-child {
+ margin-bottom: 0px;
+}
+
+/* 回り込み解除 */
+.talk:after,.talk:before {
+ clear: both;
+ content: "";
+ display: block;
+}
+
+/* ----- 左の場合 ----- */
+/* 左からの吹き出しテキスト */
+.talk-Ltxt {
+ color: #444;
+ width: 70%;
+ position: relative;
+ display: inline-block;
+ padding: 1.2em;
+ border: 3px solid #b8e3c1;
+ background-color: #fff;
+ border-radius: 5px;
+}
+
+/* 左の三角形を作る */
+.talk-Ltxt:before {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-right: 10px solid #b8e3c1;
+ top: 15px;
+ left: -20px;
+}
+
+.talk-Ltxt:after {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-right: 10px solid #fff;
+ top: 15px;
+ left: -16px;
+}
+.talker {
+ display: inline-block;
+ margin-right: 5px;
+ vertical-align: top;
+ padding: 15px 0 0 0;
+ width: 25%;
+ text-align: right;
+}
+.talk {
+ margin-top: 7px;
 }

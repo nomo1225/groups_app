@@ -2,7 +2,7 @@
   <h2>「<%= @discussion.title %>」</h2>
 </div>
 <div class="text-center">
-  <p>投稿者:<%= @discussion.user.name %>&nbsp;&nbsp; 投稿日時:<%= @discussion.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  <p>投稿者:<%= @discussion.user.name.truncate(10, omission: '…') %>&nbsp;&nbsp; 投稿日:<%= @discussion.created_at.strftime("%Y-%m-%d") %></p>
   <p>内容：<%= @discussion.content %></p>
 </div>
 

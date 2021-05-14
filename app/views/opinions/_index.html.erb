@@ -1,22 +1,15 @@
-<table class="table table-sm mt-3">
-  <thead>
-    <tr>
-      <th style="width:15%" scope="col">名前</th>
-      <th style="width:75%" scope="col">意見</th>
-      <th style="width:10%" scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @opinions.each do |opinion| %>
-      <tr>
-        <td><%= opinion.user.name %></td>
-        <td><%= opinion.content %></td>
-        <% if opinion.user_id == current_user.id %>
-          <td class="btn mx-auto btn-sm">
-            <%= link_to '削除', opinion, method: :delete, data: { confirm: '本当に削除しますか？' }%>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @opinions.each do |opinion| %>
+  <div class="talk">
+    <div class="talker">
+      <%= opinion.user.name.truncate(7, omission: '…') %>
+      <div>
+      <% if opinion.user_id == current_user.id %>
+        <%= link_to '削除', opinion, method: :delete, data: { confirm: '本当に削除しますか？' }%>
+      <% end %>
+      </div>
+    </div>
+    <div class="talk-Ltxt">
+      <p class="talk-text"><%= opinion.content %></p>
+    </div>
+  </div>
+<% end %>
