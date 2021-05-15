@@ -20,10 +20,10 @@
             <table class="table table-style">
               <thead>
                 <tr>
-                  <th style="width:17%">予定日時</th>
-                  <th style="width:13%">登録者</th>
-                  <th style="width:15%">タイトル</th>
-                  <th style="width:25%">内容</th>
+                  <th style="width:12%">予定日</th>
+                  <th style="width:12%">開始時間</th>
+                  <th style="width:20%">タイトル</th>
+                  <th style="width:36%">内容</th>
                   <th style="width:12%">出欠状況</th>
                   <th style="width:8%">人数</th>
                 </tr>
@@ -31,9 +31,9 @@
               <% @plans.each do |plan| %>
               <tbody>
                 <tr>
-                  <td><%= plan.start_time.strftime("%Y-%m-%d") %>/<%= plan.plan_at.strftime("%H:%M") %></td>
-                  <td><%= User.find(plan.user_id).name %></td>
-                  <td><%= link_to plan.title.truncate(15, omission: '…'), plan_path(plan) %></td>
+                  <td><%= plan.start_time.strftime("%Y-%m-%d") %></td>
+                  <td><%= plan.plan_at.strftime("%H:%M") %></td>
+                  <td><%= link_to plan.title.truncate(10, omission: '…'), plan_path(plan) %></td>
                   <td><%= plan.content.truncate(15, omission: '…') %></td>
                   <td class="text-center"><%= render 'attendances/attend_button', plan: plan %></td>
                   <td class="text-center"><%= Attendance.where(plan_id: plan.id).count %></td>
@@ -56,19 +56,19 @@
           <table class="table table-style">
             <thead>
               <tr>
-                <th style="width:30%">予定日時</th>
-                <th style="width:15%">登録者</th>
-                <th style="width:20%">タイトル</th>
+                <th style="width:23%">予定日</th>
+                  <th style="width:15%">時間</th>
+                <th style="width:30%">タイトル</th>
                 <th style="width:20%">出欠状況</th>
-                <th style="width:15%">人数</th>
+                <th style="width:12%">人数</th>
               </tr>
             </thead>
             <% @plans.each do |plan| %>
             <tbody>
               <tr>
-                <td><%= plan.start_time.strftime("%Y-%m-%d") %>/<%= plan.plan_at.strftime("%H:%M") %></td>
-                <td><%= User.find(plan.user_id).name %></td>
-                <td><%= link_to plan.title.truncate(10, omission: '…'), plan_path(plan) %></td>
+                <td><%= plan.start_time.strftime("%Y-%m-%d") %></td>
+                  <td><%= plan.plan_at.strftime("%H:%M") %></td>
+                <td><%= link_to plan.title.truncate(8, omission: '…'), plan_path(plan) %></td>
                 <td class="text-center"><%= render 'attendances/attend_button', plan: plan %></td>
                 <td class="text-center"><%= Attendance.where(plan_id: plan.id).count %></td>
               </tr>
