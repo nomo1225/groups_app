@@ -5,7 +5,7 @@
     <%= render 'mygroups/leftside' %>
     <div class="d-flex flex-column mt-2">
       <%= link_to new_mygroup_plan_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2" do %>
-        <i class="fas fa-calendar-alt"></i> 予定登録
+        <i class="fas fa-calendar-alt" style="color:hotpink;"></i> 予定登録
       <% end %>
     </div>
   </aside>
@@ -15,7 +15,7 @@
     <% if @plans.presence %>
       <div class="card pc_area">
           <div class="card-header c-height">
-            <h5 class="card-title text-center"><i class="fas fa-calendar-alt"></i> 予定一覧</h5>
+            <h5 class="card-title text-center"><i class="fas fa-calendar-alt" style="color:hotpink;"></i> 予定一覧</h5>
           </div>
             <table class="table table-style">
               <thead>
@@ -44,14 +44,14 @@
       </div>
     <% else %>
       <div class="text-center">
-        <p><i class="far fa-lightbulb"></i>【予定登録】ボタンから予定を登録できます。</p>
+        <p><i class="far fa-lightbulb" style="color:hotpink;"></i>【予定登録】ボタンから予定を登録できます。</p>
         <p>登録後、出欠状況欄のボタンで<出席・欠席>の変更ができます。</p>
       </div>
     <% end %>
     <!--Phone表示-->
     <div class="card phone_area">
         <div class="card-header c-height">
-          <h5 class="card-title text-center"><i class="fas fa-calendar-alt"></i> 予定一覧</h5>
+          <h5 class="card-title text-center"><i class="fas fa-calendar-alt" style="color:hotpink;"></i> 予定一覧</h5>
         </div>
           <table class="table table-style">
             <thead>

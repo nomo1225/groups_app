@@ -1,13 +1,37 @@
-<div class="border card group-info">
-  <img class="rounded img-fluid mx-auto d-block" src="<%= @mygroup.image.url %>" alt="グループアイコン" width="80" height="80">
-  <div class="text-center">
-    <h5 class="font-weight-bold"><%= @mygroup.name %></h5>
-    <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= @mygroup.area %></p>
-    <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category.truncate(10, omission: '…') %></p>
-    <!--グループ作成ユーザのみ、IDとグループ修正リンク表示-->
-    <% if @mygroup.user_id == current_user.id %>
-      <p style="line-height:0.5rem"><span class="text-secondary">ID：</span><%= @mygroup.group_id %></p>
-      <%= link_to '登録情報修正', edit_mygroup_path(@mygroup), class: "btn btn-outline-info mx-auto  btn-sm mb-1" %>
-    <% end %>
+<div class="card pc_area">
+  <div class="border card group-info">
+    <img class="rounded img-fluid mx-auto d-block" src="<%= @mygroup.image.url %>" alt="グループアイコン" width="80" height="80">
+    <div class="text-center">
+      <h5 class="font-weight-bold"><%= @mygroup.name %></h5>
+      <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= @mygroup.area %></p>
+      <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category.truncate(10, omission: '…') %></p>
+      <!--グループ作成ユーザのみ、IDとグループ修正リンク表示-->
+      <% if @mygroup.user_id == current_user.id %>
+        <p style="line-height:0.5rem"><span class="text-secondary">ID：</span><%= @mygroup.group_id %></p>
+        <%= link_to '登録情報修正', edit_mygroup_path(@mygroup), class: "btn btn-outline-info mx-auto  btn-sm mb-1" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="phone_area">
+  <div class="card mb-2">
+    <div class="row no-gutters align-items-center text-center">
+      <div class="col-4">
+        <img class="rounded mx-auto d-block center_card_img" src="<%= @mygroup.image.url %>" alt="グループアイコン" width="80" height="80">
+        <h5 class="font-weight-bold"><%= @mygroup.name %></h5>
+      </div>
+      <div class="col-8 text-center">
+        <div class="card-body center_card">
+          <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= @mygroup.area %></p>
+          <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category.truncate(10, omission: '…') %></p>
+          <!--グループ作成ユーザのみ、IDとグループ修正リンク表示-->
+          <% if @mygroup.user_id == current_user.id %>
+            <p style="line-height:0.5rem"><span class="text-secondary">ID：</span><%= @mygroup.group_id %></p>
+            <%= link_to '登録情報修正', edit_mygroup_path(@mygroup), class: "btn btn-outline-info mx-auto  btn-sm" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

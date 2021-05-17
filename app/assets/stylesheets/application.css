@@ -488,3 +488,11 @@ p.talk-text:last-child {
 .talk {
  margin-top: 7px;
 }
+
+.center_card {
+ padding: 0.5rem;
+}
+.center_card_img {
+ width: 50%;
+ height: auto;
+}

@@ -8,10 +8,10 @@
     <div class="pc_area">
       <div class="d-flex flex-column mt-2">
         <%= link_to new_mygroup_notice_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2" do %>
-          <i class="far fa-lightbulb"></i> お知らせ登録
+          <i class="far fa-lightbulb" style="color:gold;"></i> お知らせ登録
         <% end %>
         <%= link_to new_mygroup_discussion_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2" do %>
-          <i class="far fa-calendar-check"></i> 打合せ項目登録
+          <i class="far fa-calendar-check" style="color:lightblue;"></i> 打合せ項目登録
         <% end %>
         <% unless current_user.id == @mygroup.user_id %>
           <%= link_to '退会する', relationship_path(mygroup_id: @mygroup.id), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-sm btn-outline-danger btn-block w-50 mx-auto mt-2' %>
@@ -23,17 +23,12 @@
       <div class="row add_items">
         <div class="col-xs-4">
           <%= link_to new_mygroup_notice_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2 mr-1" do %>
-            <i class="far fa-lightbulb"></i> お知らせ登録
+            <i class="far fa-lightbulb" style="color:gold;"></i> お知らせ登録
           <% end %>
         </div>
         <div class="col-xs-4">
           <%= link_to new_mygroup_discussion_path(mygroup_id: @mygroup.id),class: "btn btn-primary make-btn mt-2 mr-1" do %>
-            <i class="far fa-calendar-check"></i> 打合せ項目登録
-          <% end %>
-        </div>
-        <div class="col-xs-4">
-          <%= link_to accounts_path(mygroup_id: @mygroup.id), class: "btn btn-primary make-btn mt-2" do %>
-            <i class="fas fa-yen-sign"></i> 会計情報
+            <i class="far fa-calendar-check" style="color:lightblue;"></i> 打合せ項目登録
           <% end %>
         </div>
         <% unless current_user.id == @mygroup.user_id %>
@@ -80,7 +75,7 @@
       <div class="card pc_area">
         <% if @notices.presence %>
           <div class="card-header c-height">
-            <h5 class="card-title text-center"><i class="far fa-lightbulb"></i> お知らせ一覧</h5>
+            <h5 class="card-title text-center"><i class="far fa-lightbulb" style="color:gold;"></i> お知らせ一覧</h5>
           </div>
             <table class="table table-style">
               <thead>
@@ -105,7 +100,7 @@
             <%= paginate @notices %>
         <% else %>
           <div class="text-center mt-3">
-            <p><i class="far fa-lightbulb"></i>【お知らせ登録】ボタンからお知らせを登録できます。</p>
+            <p><i class="far fa-lightbulb" style="color:gold;"></i>【お知らせ登録】ボタンからお知らせを登録できます。</p>
           </div>
         <% end %>
       </div>
@@ -113,7 +108,7 @@
       <div class="card pc_area mt-3">
         <% if @discussions.presence %>
           <div class="card-header c-height">
-            <h5 class="card-title text-center"><i class="far fa-calendar-check"></i> 打合せ項目一覧</h5>
+            <h5 class="card-title text-center"><i class="far fa-calendar-check" style="color:lightblue;"></i> 打合せ項目一覧</h5>
           </div>
             <table class="table table-style">
               <thead>
@@ -137,7 +132,7 @@
         <% else %>
           <div class="pc_area mt-3">
             <div class="text-center">
-              <p><i class="far fa-lightbulb"></i>【打合せ項目登録】ボタンから打合せ項目を登録できます。</p>
+              <p><i class="far fa-lightbulb" style="color:lightblue;"></i>【打合せ項目登録】ボタンから打合せ項目を登録できます。</p>
             </div>
           </div>
         <% end %>
@@ -147,7 +142,7 @@
       <div class="card phone_area">
         <% if @notices.presence %>
           <div class="card-header c-height">
-            <h5 class="card-title text-center"><i class="far fa-lightbulb"></i> お知らせ一覧</h5>
+            <h5 class="card-title text-center"><i class="far fa-lightbulb" style="color:gold;"></i> お知らせ一覧</h5>
           </div>
             <table class="table table-style">
               <thead>
@@ -171,7 +166,7 @@
         <% else %>
           <div class="phone_area">
             <div class="text-center mt-2">
-              <p><i class="far fa-lightbulb"></i>【お知らせ登録】ボタンからお知らせを登録できます。</p>
+              <p><i class="far fa-lightbulb style="color:gold;""></i>【お知らせ登録】ボタンからお知らせを登録できます。</p>
             </div>
           </div>
         <% end %>
@@ -180,7 +175,7 @@
       <div class="card phone_area mt-2">
         <% if @discussions.presence %>
           <div class="card-header c-height">
-            <h5 class="card-title text-center"><i class="far fa-calendar-check"></i> 打合せ項目一覧</h5>
+            <h5 class="card-title text-center"><i class="far fa-calendar-check" style="color:lightblue;"></i> 打合せ項目一覧</h5>
           </div>
             <table class="table table-style">
               <thead>
@@ -204,7 +199,7 @@
         <% else %>
           <div class="phone_area mt-2">
             <div class="text-center">
-              <p><i class="far fa-lightbulb"></i>【打合せ項目登録】ボタンから打合せ項目を登録できます。</p>
+              <p><i class="far fa-lightbulb" style="color:lightblue;"></i>【打合せ項目登録】ボタンから打合せ項目を登録できます。</p>
             </div>
           </div>
         <% end %>
