@@ -17,8 +17,8 @@
       <ul class="nav nav-tabs nav-justified navcolor" style="height:35px;">
         <li class="nav-item"><a href="<%= mygroup_path(@mygroup) %>" class="nav-link<%= 'active' if current_page?(mygroup_path(@mygroup)) %>">Grトップ </a></li>
         <li class="nav-item"><a href="/mygroups/<%= @mygroup.id %>/members" class="nav-link<%= 'active' if current_page?("/mygroups/#{@mygroup.id}/members") %>">メンバー</a></li>
-        <li class="nav-item"><a href="/mygroups/<%= @mygroup.id %>/plans" class="nav-link<%= 'active' if current_page?("/mygroups/#{@mygroup.id}/plans") %>"><i class="fas fa-calendar-alt"></i> 予定</a></li>
-        <li class="nav-item"><a href="<%= accounts_path(mygroup_id: @mygroup.id) %>" class="nav-link<%= 'active' if current_page?(accounts_path(mygroup_id: @mygroup.id)) %>"><i class="fas fa-yen-sign"></i> 会計情報</a></li>
+        <li class="nav-item"><a href="/mygroups/<%= @mygroup.id %>/plans" class="nav-link<%= 'active' if current_page?("/mygroups/#{@mygroup.id}/plans") %>"><i class="fas fa-calendar-alt" style="color:hotpink;"></i> 予定</a></li>
+        <li class="nav-item"><a href="<%= accounts_path(mygroup_id: @mygroup.id) %>" class="nav-link<%= 'active' if current_page?(accounts_path(mygroup_id: @mygroup.id)) %>"><i class="fas fa-yen-sign" style="color:seagreen;"></i> 会計情報</a></li>
       </ul>
     </div>
   </div>

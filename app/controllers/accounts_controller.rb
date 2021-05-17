@@ -34,9 +34,10 @@ class AccountsController < ApplicationController
     @mygroup = Mygroup.find(params[:mygroup_id])
     @accounts = @mygroup.accounts.order(processed_date: :desc).page(params[:page]).per(10)
     # 全収入
-    @income = Account.where(treasurer: "income").sum(:fee)
+    @income = Account.where(treasurer: "income", mygroup_id: @mygroup.id).sum(:fee)
     # 全支出
-    @expense = Account.where(treasurer: "expense").sum(:fee)
+    @expense = Account.where(treasurer: "expense", mygroup_id: @mygroup.id).sum(:fee)
+    
     @total = (@income - @expense)
   end
   
@@ -48,8 +49,8 @@ class AccountsController < ApplicationController
     @select_year = params[:select_year]
     # processed_dateカラムの年で絞込
     @accounts = @mygroup.accounts.by_year(@select_year, field: :processed_date).order(processed_date: :desc).page(params[:page]).per(20)
-    @income = Account.where(treasurer: "income").by_year(@select_year, field: :processed_date).sum(:fee)
-    @expense = Account.where(treasurer: "expense").by_year(@select_year, field: :processed_date).sum(:fee)
+    @income = Account.where(treasurer: "income", mygroup_id: @mygroup.id).by_year(@select_year, field: :processed_date).sum(:fee)
+    @expense = Account.where(treasurer: "expense", mygroup_id: @mygroup.id).by_year(@select_year, field: :processed_date).sum(:fee)
     @total = (@income - @expense)
   end
 

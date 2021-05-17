@@ -12,8 +12,8 @@
   
   <aside class="col-sm-9 mt-3 textsm">
     <!--PC表示-->
-    <% if @plans.presence %>
-      <div class="card pc_area">
+    <div class="card pc_area">
+        <% if @plans.presence %>
           <div class="card-header c-height">
             <h5 class="card-title text-center"><i class="fas fa-calendar-alt" style="color:hotpink;"></i> 予定一覧</h5>
           </div>
@@ -41,15 +41,17 @@
               </tbody>
               <% end %>
             </table>
-      </div>
-    <% else %>
-      <div class="text-center">
-        <p><i class="far fa-lightbulb" style="color:hotpink;"></i>【予定登録】ボタンから予定を登録できます。</p>
-        <p>登録後、出欠状況欄のボタンで<出席・欠席>の変更ができます。</p>
-      </div>
-    <% end %>
+        <% else %>
+          <div class="text-center mt-2">
+            <p><i class="far fa-lightbulb" style="color:gold;"></i>【予定登録】ボタンから予定を登録できます。</p>
+            <p>登録後、出欠状況欄のボタンで<出席・欠席>の変更ができます。</p>
+          </div>
+        <% end %>
+    </div>
+    
     <!--Phone表示-->
     <div class="card phone_area">
+      <% if @plans.presence %>
         <div class="card-header c-height">
           <h5 class="card-title text-center"><i class="fas fa-calendar-alt" style="color:hotpink;"></i> 予定一覧</h5>
         </div>
@@ -75,7 +77,14 @@
             </tbody>
             <% end %>
           </table>
+      <% else %>
+        <div class="text-center mt-2">
+          <p><i class="far fa-lightbulb" style="color:gold;"></i>【予定登録】ボタンから予定を登録できます。</p>
+          <p>登録後、出欠状況欄のボタンで<出席・欠席>の変更ができます。</p>
+        </div>
+      <% end %>
     </div>
+    
     <%= paginate @plans %>
   </aside>
   

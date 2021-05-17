@@ -74,17 +74,16 @@
 <!--PHONE表示-->
 <div class="phone_area">
   <% if @accounts.present? %>
+    <p>【収支トータル】</p>
     <table class="table table-sm">
       <thead>
         <tr>
-          <th style="width:10%" scope="col"></th>
-          <th style="width:40%" scope="col">【収支トータル】</th>
-          <th style="width:20%" scope="col">収入計 <%= @income.to_s(:delimited) %></th>
-          <th style="width:20%" scope="col">支出計 <span class="expense"><%= @expense.to_s(:delimited) %></span></th>
+          <th style="width:33%" scope="col">収入計 <%= @income.to_s(:delimited) %></th>
+          <th style="width:33%" scope="col">支出計 <span class="expense"><%= @expense.to_s(:delimited) %></span></th>
           <% if @total <=0 %>
-            <th style="width:20%" scope="col">合計 <span class="expense"><%= (@total).to_s(:delimited) %></span></th>
+            <th style="width:33%" scope="col">合計 <span class="expense"><%= (@total).to_s(:delimited) %></span></th>
           <% else %>
-            <th style="width:20%" scope="col">合計 <%= (@total).to_s(:delimited) %></th>
+            <th style="width:33%" scope="col">合計 <%= (@total).to_s(:delimited) %></th>
           <% end %>
         </tr>
       </thead>
@@ -93,7 +92,7 @@
       <thead>
        <tr>
           <th style="width:25%" scope="col">処理日</th>
-          <th style="width:20%" scope="col">収入 / 支出</th>
+          <th style="width:20%" scope="col">収入/支出</th>
           <th style="width:35%" scope="col">摘要</th>
           <th style="width:20%" scope="col">金額</th>
         </tr>
