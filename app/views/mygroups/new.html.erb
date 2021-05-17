@@ -20,13 +20,13 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :area, '地域' %>
+        <%= f.label :area, '主な活動地域' %>
         <%= f.select :area, Mygroup.areas.keys, {}, class: 'form-control' %>
       </div>
 
       <div class="form-group">
         <%= f.label :category, 'カテゴリー' %><span class="form-color">※入力必須</span>
-        <%= f.text_field :category, class: 'form-control' %>
+        <%= f.text_field :category, class: 'form-control', placeholder: '"サッカー","ネコ愛好会"など' %>
       </div>
       
       <div class="form-group">

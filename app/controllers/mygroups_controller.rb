@@ -29,15 +29,15 @@ class MygroupsController < ApplicationController
     @discussions = @mygroup.discussions.order(id: :desc).page(params[:page]).per(5)
     
     #Mygroupの天気情報
-    unless @mygroup.area == "---"
-      city = City.find_by(name: @mygroup.area)
-      weather = Weather.find_by(location_id: city.location_id)
-      if weather
-        @weather_main = weather.weather_main
-        @temp_min     = weather.temp_min
-        @temp_max     = weather.temp_max
-      end
-    end
+    # unless @mygroup.area == "---"
+    #   city = City.find_by(name: @mygroup.area)
+    #   weather = Weather.find_by(location_id: city.location_id)
+    #   if weather
+    #     @weather_main = weather.weather_main
+    #     @temp_min     = weather.temp_min
+    #     @temp_max     = weather.temp_max
+    #   end
+    # end
   end
   
   def index #予定の表示
