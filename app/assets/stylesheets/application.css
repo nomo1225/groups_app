@@ -190,21 +190,21 @@ html {
  }
  
  /*Weather*/
- .weather {
-  padding: 7px 10px 0 10px;
- }
-  .weather img {
-  width: 50%;
- }
- @media screen and (max-width:480px) {
-  .weather_img_txt {
-   width: 25%;
-   padding: 0 0 0 50px;
-  }
- }
- .weather_area {
-  padding: 3px 15px;
- }
+ /*.weather {*/
+ /* padding: 7px 10px 0 10px;*/
+ /*}*/
+ /* .weather img {*/
+ /* width: 50%;*/
+ /*}*/
+ /*@media screen and (max-width:480px) {*/
+ /* .weather_img_txt {*/
+ /*  width: 25%;*/
+ /*  padding: 0 0 0 50px;*/
+ /* }*/
+ /*}*/
+ /*.weather_area {*/
+ /* padding: 3px 15px;*/
+ /*}*/
  
 /*グループ一覧とこ*/
  .mg-left {

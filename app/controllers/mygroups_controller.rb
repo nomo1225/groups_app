@@ -43,6 +43,16 @@ class MygroupsController < ApplicationController
   def index #予定の表示
     @plans = @mygroup.plans.where('plans.start_time > ?', Date.yesterday).order(start_time: :asc).page(params[:page]).per(4)
     @plans_for_calender = @mygroup.plans.all
+    
+    # 経路検索(5/18 weatherからコピーのみ)
+    # url = "https://api.openweathermap.org/data/2.5/weather"
+    # url << "?id=#{city.location_id}"
+    # url << "&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
+    # url << "&units=metric" #温度を摂氏に
+    # client = HTTPClient.new #インスタンス生成
+    # response = client.get(url) #GETリクエスト
+    # hash =JSON.load(response.body).to_a  #JSON形式からhashへ
+    # @weather_main = hash[1][1][0]['main']
   end
 
   def edit

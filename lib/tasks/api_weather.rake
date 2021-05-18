@@ -5,10 +5,10 @@ namespace :api_weather do
       url = "https://api.openweathermap.org/data/2.5/weather"
       url << "?id=#{city.location_id}"
       url << "&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
-      url << "&units=metric"
-      client = HTTPClient.new
-      response = client.get(url)
-      hash =JSON.load(response.body).to_a
+      url << "&units=metric" #温度を摂氏に
+      client = HTTPClient.new #インスタンス生成
+      response = client.get(url) #GETリクエスト
+      hash =JSON.load(response.body).to_a  #JSON形式からhashへ
       @weather_main = hash[1][1][0]['main']
       @temp_min     = hash[3][1]['temp_min'].round
       @temp_max     = hash[3][1]['temp_max'].round
