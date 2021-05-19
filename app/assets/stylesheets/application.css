@@ -340,6 +340,12 @@ html {
 }
 
 /*topサンプルイメージ*/
+.about-images {
+ display: flex;
+}
+.about-images2 {
+ display: flex;
+}
 
 .arrow_box{
  margin: 1.1rem;
@@ -391,7 +397,7 @@ html {
 }
 .sample {
  float: left;
- width: 25%;
+ width: 33%;
 }
 
 /*会計マイナス赤字*/
