@@ -16,4 +16,7 @@ class ToppagesController < ApplicationController
   
   def question
   end
+  
+  def how_to_use
+  end
 end

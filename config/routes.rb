@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'terms', to:          'toppages#terms'
   get 'privacy_policy', to: 'toppages#privacy_policy'
   get 'question', to:       'toppages#question'
+  get 'how_to_use', to:     'toppages#how_to_use'
   
   get 'login', to:     'sessions#new'
   post 'login', to:    'sessions#create'
