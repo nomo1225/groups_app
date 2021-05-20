@@ -2,7 +2,7 @@
   <div class="border card group-info">
     <img class="rounded img-fluid mx-auto d-block" src="<%= @mygroup.image.url %>" alt="グループアイコン" width="80" height="80">
     <div class="text-center">
-      <h5 class="font-weight-bold"><%= @mygroup.name %></h5>
+      <h5 class="font-weight-bold"><%= @mygroup.name.truncate(10, omission: '…') %></h5>
       <p style="line-height:0.5rem"><span class="text-secondary">地域：</span><%= @mygroup.area %></p>
       <p style="line-height:0.5rem"><span class="text-secondary">カテゴリー：</span><%= @mygroup.category.truncate(10, omission: '…') %></p>
       <!--グループ作成ユーザのみ、IDとグループ修正リンク表示-->
@@ -19,7 +19,7 @@
     <div class="row no-gutters align-items-center text-center">
       <div class="col-4">
         <img class="rounded mx-auto d-block center_card_img" src="<%= @mygroup.image.url %>" alt="グループアイコン" width="80" height="80">
-        <h5 class="font-weight-bold"><%= @mygroup.name %></h5>
+        <h5 class="font-weight-bold"><%= @mygroup.name.truncate(10, omission: '…') %></h5>
       </div>
       <div class="col-8 text-center">
         <div class="card-body center_card">

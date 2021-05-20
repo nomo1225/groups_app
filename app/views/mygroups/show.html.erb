@@ -90,7 +90,7 @@
               <tbody>
                 <tr>
                   <td><%= notice.created_at.strftime("%Y-%m-%d") %></td>
-                  <td><%= notice.user.name.truncate(8, omission: '…') %></td>
+                  <td><%= notice.user.name.truncate(6, omission: '…') %></td>
                   <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
                   <td><%= notice.content.truncate(22, omission: '…') %></td>
                 </tr>
@@ -156,7 +156,7 @@
               <tbody>
                 <tr>
                   <td><%= notice.created_at.strftime("%Y-%m-%d") %></td>
-                  <td><%= notice.user.name.truncate(8, omission: '…') %></td>
+                  <td><%= notice.user.name.truncate(6, omission: '…') %></td>
                   <td><%= link_to notice.title.truncate(15, omission: '…'), notice_path(notice) %></td>
                 </tr>
               </tbody>
@@ -189,7 +189,7 @@
               <tbody>
                 <tr>
                   <td><%= discussion.created_at.strftime("%Y-%m-%d") %></td>
-                  <td><%= discussion.user.name.truncate(8, omission: '…') %></td>
+                  <td><%= discussion.user.name.truncate(6, omission: '…') %></td>
                   <td><%= link_to discussion.title.truncate(15, omission: '…'), discussion_path(discussion) %></td>
                 </tr>
               </tbody>

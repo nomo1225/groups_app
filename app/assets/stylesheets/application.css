@@ -171,7 +171,7 @@ html {
  .table-style {
   margin: -0.2rem ;
   table-layout: fixed;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
  }
  @media screen and (max-width:480px) {
   .table-style img {

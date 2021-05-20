@@ -20,10 +20,10 @@
             <table class="table table-style">
               <thead>
                 <tr>
-                  <th style="width:12%">予定日</th>
+                  <th style="width:16%">予定日</th>
                   <th style="width:12%">開始時間</th>
-                  <th style="width:20%">タイトル</th>
-                  <th style="width:36%">内容</th>
+                  <th style="width:18%">タイトル</th>
+                  <th style="width:34%">内容</th>
                   <th style="width:12%">出欠状況</th>
                   <th style="width:8%">人数</th>
                 </tr>
@@ -34,7 +34,7 @@
                   <td><%= plan.start_time.strftime("%Y-%m-%d") %></td>
                   <td><%= plan.plan_at.strftime("%H:%M") %></td>
                   <td><%= link_to plan.title.truncate(10, omission: '…'), plan_path(plan) %></td>
-                  <td><%= plan.content.truncate(15, omission: '…') %></td>
+                  <td><%= plan.content.truncate(13, omission: '…') %></td>
                   <td class="text-center"><%= render 'attendances/attend_button', plan: plan %></td>
                   <td class="text-center"><%= Attendance.where(plan_id: plan.id).count %></td>
                 </tr>
@@ -58,9 +58,9 @@
           <table class="table table-style">
             <thead>
               <tr>
-                <th style="width:23%">予定日</th>
-                  <th style="width:15%">時間</th>
-                <th style="width:30%">タイトル</th>
+                <th style="width:25%">予定日</th>
+                <th style="width:15%">時間</th>
+                <th style="width:28%">タイトル</th>
                 <th style="width:20%">出欠状況</th>
                 <th style="width:12%">人数</th>
               </tr>

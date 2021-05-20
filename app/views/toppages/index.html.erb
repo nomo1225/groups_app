@@ -1,17 +1,38 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-sm-4">
-      <div class="card text-center">
-          <div class="card-header">
-            <h3 class="card-title mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h3>
+      <div class="card text-center  pc_area">
+        <div class="card-header">
+          <h3 class="card-title mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h3>
+        </div>
+        <div class="card-body border-info">
+          <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="ユーザーアイコン" width="70" height="70">
+          <h4><%= @user.name %></h4>
+          <% if @user.id == current_user.id %>
+            <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="phone_area">
+        <div class="card mb-2">
+          <div class="card-header p-1">
+            <h5 class="card-title mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h6>
           </div>
-          <div class="card-body border-info">
-            <img class="rounded img-fluid" src="<%= @user.image.url %>" alt="ユーザーアイコン" width="70" height="70">
-            <h4><%= @user.name %></h4>
-            <% if @user.id == current_user.id %>
-              <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
-            <% end %>
+          <div class="row no-gutters align-items-center text-center">
+            <div class="col-4">
+              <img class="rounded mx-auto d-block center_card_img" src="<%= @user.image.url %>" alt="ユーザーアイコン" width="80" height="80">
+            </div>
+            <div class="col-8 text-center">
+              <div class="card-body center_card">
+                <h5 class="font-weight-bold"><%= @user.name.truncate(10, omission: '…') %></h5>
+                <% if @user.id == current_user.id %>
+                  <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
+                <% end %>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
       
       <div class="d-flex flex-column mt-2">
@@ -36,19 +57,19 @@
           <table class="table table-style">
             <thead>
               <tr>
-                <th style="width:25%"></th>
-                <th style="width:23%">グループ名</th>
-                <th style="width:15%">地域</th>
-                <th style="width:37%">カテゴリ</th>
+                <th style="width:20%"></th>
+                <th style="width:28%">グループ名</th>
+                <th style="width:20%">地域</th>
+                <th style="width:32%">カテゴリ</th>
               </tr>
             </thead>
             <% @made_mygroups.each do |mygroup| %>
               <tbody>
                 <tr>
                   <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
-                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name, mygroup_path(mygroup) %></td>              
+                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(10, omission: '…'), mygroup_path(mygroup) %></td>              
                   <td><%= mygroup.area %></td>
-                  <td><%= mygroup.category %></td>
+                  <td><%= mygroup.category.truncate(10, omission: '…') %></td>
                 </tr>
               </tbody>
             <% end %>
