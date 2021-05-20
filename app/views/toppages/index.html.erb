@@ -1,6 +1,7 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-sm-4">
+      <!--PC-->
       <div class="card text-center  pc_area">
         <div class="card-header">
           <h3 class="card-title mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h3>
@@ -11,9 +12,12 @@
           <% if @user.id == current_user.id %>
             <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
           <% end %>
+          <% if @user.email == 'k.nomoto1225@gmail.com' %>
+            ユーザー数<%= User.all.count %>
+          <% end %>
         </div>
       </div>
-      
+      <!--PHONE-->
       <div class="phone_area">
         <div class="card mb-2">
           <div class="card-header p-1">
@@ -28,6 +32,9 @@
                 <h5 class="font-weight-bold"><%= @user.name.truncate(10, omission: '…') %></h5>
                 <% if @user.id == current_user.id %>
                   <%= link_to '登録情報修正', edit_user_path(@user), class: "btn btn-outline-info mx-auto  btn-sm mb-1"%>
+                <% end %>
+                <% if @user.email == 'k.nomoto1225@gmail.com' %>
+                  ユーザー数<%= User.all.count %>
                 <% end %>
               </div>
             </div>
