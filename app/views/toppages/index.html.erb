@@ -21,9 +21,8 @@
         <%= link_to new_mygroup_path, class: "btn btn-primary make-btn mt-2" do %>
           <i class="fas fa-hammer"></i> グループを作成する
         <% end %>
-        <%= link_to omikuji_path, class: "btn btn-outline-info btn-sm mt-2" do %>
-          <i class="fas fa-feather"></i> おみくじを引く！
-        <% end %>
+        <!--おみくじ表示-->
+        <%= render partial: 'omikujis/show' %> 
         
       </div>
     </aside>

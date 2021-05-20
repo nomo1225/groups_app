@@ -5,6 +5,8 @@ class ToppagesController < ApplicationController
       @mygroup       = current_user.mygroups.build
       @made_mygroups = current_user.mygroups.order(id: :asc).page(params[:page])
       @mygroups      = current_user.joined_mygroups.order(id: :asc).page(params[:page])
+      random = rand(1..51)
+      @omikuji = Omikuji.find(random)
     end
   end
   

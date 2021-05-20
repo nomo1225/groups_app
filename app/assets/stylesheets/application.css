@@ -502,3 +502,10 @@ p.talk-text:last-child {
  width: 50%;
  height: auto;
 }
+
+.omikuji-card {
+ padding: 0.25rem;
+}
+.omikuji-card-title {
+ margin-bottom: 0;
+}
