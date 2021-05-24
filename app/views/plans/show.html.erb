@@ -6,31 +6,31 @@
   <tbody>
     <tr>
       <th scope="row">
-        <div class="text-center">予定日時</div>
+        <div class="text-center nowrap">予定日時</div>
       </th>
       <td><%= @plan.start_time.strftime("%Y-%m-%d") %> / <%= @plan.plan_at.strftime("%H:%M") %>～</td>
     </tr>
     <tr>
       <th scope="row">
-        <div class="text-center">登録者</div>
+        <div class="text-center nowrap">登録者</div>
       </th>
       <td><%= User.find(@plan.user_id).name %></td>
     </tr>
     <tr>
       <th scope="row">
-        <div class="text-center">タイトル</div>
+        <div class="text-center nowrap">タイトル</div>
       </th>
       <td><%= @plan.title %></td>
     </tr>
     <tr>
       <th scope="row">
-        <div class="text-center">内容</div>
+        <div class="text-center nowrap">内容</div>
       </th>
       <td><%= @plan.content %></td>
     </tr>
     <tr>
       <th scope="row">
-        <div class="text-center">出席予定</div>
+        <div class="text-center nowrap">出席予定</div>
       </th>
       <td>
         <% @attendances.each do |a| %>
@@ -42,7 +42,7 @@
     <% if @plan.add_title.present? %>
       <tr>
         <th scope="row">
-          <div class="text-center">活動場所</div>
+          <div class="text-center nowrap">活動場所</div>
         </th>
         <td>
           <p><%= @plan.add_title %></p>
