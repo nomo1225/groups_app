@@ -74,9 +74,9 @@
               <tbody>
                 <tr>
                   <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
-                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(10, omission: '…'), mygroup_path(mygroup) %></td>              
+                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(9, omission: '…'), mygroup_path(mygroup) %></td>              
                   <td><%= mygroup.area %></td>
-                  <td><%= mygroup.category.truncate(10, omission: '…') %></td>
+                  <td><%= mygroup.category.truncate(9, omission: '…') %></td>
                 </tr>
               </tbody>
             <% end %>
