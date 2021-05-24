@@ -1,5 +1,6 @@
 <div class="text-center">
   <h1>予定登録</h1>
+  <p>※入力必須</p>
 </div>
 
 <div class="row">
@@ -9,20 +10,30 @@
        <%= render 'layouts/error_messages', model: f.object %>
       
       <div class="form-group form-inline  text-left">
-        <%= f.label :start_time, '予定日' %>
+        <%= f.label :start_time, '※予定日' %>
         <%= f.date_field :start_time, class: 'form-control' %>
-        <%= f.label :plan_at, '開始時間' %>
+        <%= f.label :plan_at, '※開始時間' %>
         <%= f.time_field :plan_at, class: 'form-control' %>
       </div>
       
       <div class="form-group">
-        <%= f.label :title, 'タイトル' %>
+        <%= f.label :title, '※タイトル' %>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
       
       <div class="form-group">
-        <%= f.label :content, '内容' %>
+        <%= f.label :content, '※内容' %>
         <%= f.text_field :content, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :add_title, '活動場所' %>
+        <%= f.text_field :add_title, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :address, '住所' %>
+        <%= f.text_field :address, class: 'form-control' %>
       </div>
 
       <%= f.hidden_field :user_id, value: current_user.id %>

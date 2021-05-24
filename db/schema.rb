@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_111908) do
+ActiveRecord::Schema.define(version: 2021_05_24_042722) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "processed_date"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2021_05_19_111908) do
     t.string "treasurer"
     t.index ["mygroup_id"], name: "index_accounts_on_mygroup_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,6 +114,10 @@ ActiveRecord::Schema.define(version: 2021_05_19_111908) do
     t.bigint "mygroup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "add_title"
     t.index ["mygroup_id"], name: "index_plans_on_mygroup_id"
     t.index ["user_id"], name: "index_plans_on_user_id"
   end

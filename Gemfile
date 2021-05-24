@@ -83,3 +83,6 @@ gem 'aws-sdk'
 gem 'by_star', git: "git://github.com/radar/by_star"  #日付カラムでレコードを絞り込む
 
 gem 'serviceworker-rails' #PWA導入
+
+gem 'geocoder' #経度緯度変換
+gem 'gmaps4rails'

@@ -24,6 +24,16 @@
         <%= f.label :content, '内容' %>
         <%= f.text_field :content, class: 'form-control' %>
       </div>
+      
+      <div class="form-group">
+        <%= f.label :add_title, '活動場所' %>
+        <%= f.text_field :add_title, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :address, '住所' %>
+        <%= f.text_field :address, class: 'form-control' %>
+      </div>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :mygroup_id, value: @plan.mygroup_id %>

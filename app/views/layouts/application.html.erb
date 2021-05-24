@@ -8,7 +8,7 @@
     <meta name="keywords" content="無料,グループウェア,クラブ活動,スケジュール管理,予定,音楽,友達">
     <meta name="description" content="予定・お知らせ・出欠機能などが使える無料グループウェアです。
                                       スポーツ団体や趣味のグループなどの情報共有にお使いいただけます。">
-    <title><%= content_for?(:title) ? yield(:title) : "Groups | 無料 グループウェア スケジュール管理 予定 出欠 お知らせ 情報共有"%></title>
+    <title><%= content_for?(:title) ? yield(:title) : "無料 グループウェア【Groups】活動管理(予定・出欠・会員など) 情報共有"%></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -28,7 +28,9 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="apple-mobile-web-app-capable" content="yes"></head>
     <script data-ad-client="ca-pub-2477802141933900" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
+    <script src="//maps.google.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>"></script>
+    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    
   <body>
     <%= render 'layouts/navbar' %>
 

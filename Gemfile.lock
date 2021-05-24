@@ -1155,8 +1155,10 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
+    geocoder (1.6.7)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     httpclient (2.8.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -1317,6 +1319,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dotenv-rails
   fog-aws
+  geocoder
+  gmaps4rails
   httpclient
   jbuilder (~> 2.5)
   kaminari

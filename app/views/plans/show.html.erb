@@ -1,3 +1,7 @@
+<div class="text-center">
+  <h1>予定詳細</h1>
+</div>
+
 <table class="table">
   <tbody>
     <tr>
@@ -35,8 +39,58 @@
         <p>計：<%= Attendance.where(plan_id: @plan.id).count %>人</p>
       </td>
     </tr>
+    <tr>
+      <th scope="row">
+        <div class="text-center">活動場所</div>
+      </th>
+      <td>
+        <p><%= @plan.add_title %></p>
+        <p>住所: <%= @plan.address %></p>
+        <div class="gmap-wrap"><div id="map"></div></div>
+        
+          <style>
+            #map{
+            height: 350px;
+            width: 100%;
+            }
+          </style>
+
+          <script type="text/javascript">
+              function initMap() {
+
+                  var test ={lat: <%= @plan.latitude %>, lng: <%= @plan.longitude %>};
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15,
+                      center: test
+                  });
+                  var transitLayer = new google.maps.TransitLayer();
+                  transitLayer.setMap(map);
+
+                  var contentString = '住所：<%= @plan.address %>';
+                  var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                  });
+
+                  var marker = new google.maps.Marker({
+                      position:test,
+                      map: map,
+                      title: contentString
+                  });
+
+                  marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                  });
+              }
+          </script>
+
+          <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
+          </script>
+      </td>
+    </tr>
   </tbody>
 </table>
+
 
 <div class="d-flex flex-column mt-2">
   <% if @plan.user_id == current_user.id %>

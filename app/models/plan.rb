@@ -9,7 +9,8 @@ class Plan < ApplicationRecord
   validates :start_time, presence: true
   validates :plan_at, presence: true
   validate :date_before_start
-  
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
   
   def date_before_start
     return if start_time.blank?
