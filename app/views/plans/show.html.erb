@@ -8,7 +8,7 @@
       <th scope="row">
         <div class="text-center">予定日時</div>
       </th>
-      <td><%= @plan.start_time.strftime("%Y-%m-%d") %> / <%= @plan.plan_at.strftime("%H:%M") %></td>
+      <td><%= @plan.start_time.strftime("%Y-%m-%d") %> / <%= @plan.plan_at.strftime("%H:%M") %>～</td>
     </tr>
     <tr>
       <th scope="row">
@@ -50,7 +50,7 @@
         
           <style>
             #map{
-            height: 350px;
+            height: 31.25rem;
             width: 100%;
             }
           </style>
