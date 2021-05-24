@@ -46,6 +46,11 @@
       <td>
         <p><%= @plan.add_title %></p>
         <p>住所: <%= @plan.address %></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        
         <div class="gmap-wrap"><div id="map"></div></div>
         
           <style>
@@ -86,10 +91,7 @@
           <script async defer
                   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
           </script>
-      </td>
-    </tr>
-  </tbody>
-</table>
+   
 
 
 <div class="d-flex flex-column mt-2">
