@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :create, :edit, :update, :destroy]
   
+  # グループに紐づく項目の新規作成時にmygroup_idを持たせる
   resources :mygroups,  only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :notices, only: [:new]
     resources :plans,   only: [:new]

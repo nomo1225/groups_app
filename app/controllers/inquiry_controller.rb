@@ -1,4 +1,7 @@
 class InquiryController < ApplicationController
+  
+  # Inquiry 問合せ機能
+  
   def new
     @inquiry = Inquiry.new
   end

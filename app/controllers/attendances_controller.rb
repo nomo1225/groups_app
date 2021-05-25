@@ -1,6 +1,8 @@
 class AttendancesController < ApplicationController
   before_action :require_user_logged_in
   
+  #Attendance 予定への参加・不参加
+  
   def create
     plan = Plan.find(params[:plan_id])
     current_user.attend(plan)

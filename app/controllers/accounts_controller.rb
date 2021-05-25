@@ -5,9 +5,11 @@ class AccountsController < ApplicationController
   before_action :group_member?, only: [:show]
   before_action :add_group?, only: [:new, :index, :total]
   
+  # Account 会計情報
+  
   def new
     @account = Account.new
-    @mygroup_id = params[:mygroup_id]
+    @mygroup_id = params[:mygroup_id] #グループと紐づけ用
     @mygroup = Mygroup.find(params[:mygroup_id])
     unless @mygroup.members.exists?(id: current_user.id)
       flash[:danger] = '権限がありません。'
@@ -41,7 +43,7 @@ class AccountsController < ApplicationController
     @total = (@income - @expense)
   end
   
-  def year_total
+  def year_total #年ごと計 表示
     redirect_to total_path(mygroup_id: params[:mygroup_id], select_year: params[:select_year])
   end
   def total

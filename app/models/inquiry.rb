@@ -1,4 +1,5 @@
 class Inquiry
+  # 問合せ機能
   include ActiveModel::Model
 
   attr_accessor :name, :email, :message

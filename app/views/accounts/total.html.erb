@@ -60,7 +60,7 @@
       <thead>
         <tr>
           <th style="width:10%" scope="col"></th>
-          <th style="width:40%" scope="col">【収支トータル】</th>
+          <th style="width:40%" scope="col">【<%= @select_year %>年 収支】</th>
           <th style="width:20%" scope="col">収入計 <%= @income.to_s(:delimited) %></th>
           <th style="width:20%" scope="col">支出計 <span class="expense"><%= @expense.to_s(:delimited) %></span></th>
           <% if @total <=0 %>

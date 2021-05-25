@@ -4,6 +4,8 @@ class OpinionsController < ApplicationController
   before_action :create_member?, only: [:destroy]
   before_action :group_member?, only: [:index]
   
+  # Opinion 意見(打合せ(discussion)に対して)
+  
   def new
     @opinion = Opinion.new
     @mygroup_id = params[:mygroup_id]

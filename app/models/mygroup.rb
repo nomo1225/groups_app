@@ -1,7 +1,14 @@
 class Mygroup < ApplicationRecord
-  belongs_to :user
+  # グループ機能
+  belongs_to :user                              # ユーザーがグループを作成
+  has_many :notices, dependent: :destroy        # グループにはたくさんのお知らせ
+  has_many :plans, dependent: :destroy          # グループにはたくさんの予定
+  has_many :relationships, dependent: :destroy  # ユーザーとグループの紐づけ
+  has_many :members, through: :relationships, source: :user, dependent: :destroy #グループのメンバーたち 
+  has_many :discussions, dependent: :destroy    # グループにはたくさんの打合せ項目
+  has_many :accounts, dependent: :destroy       # グループにはたくさんの会計情報 
   
-  before_save { self.group_id.downcase! }
+  before_save { self.group_id.downcase! } #group_idは小文字
   VALID_GROPID_REGEX =/\A[a-z0-9]+\z/
 
   validates :group_id, presence: true, uniqueness: true,
@@ -11,7 +18,7 @@ class Mygroup < ApplicationRecord
   validates :area, presence: true
   validates :category, presence: true, length: { maximum: 20 }
   
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader # Gem carriewaveでの画像アップロード
   
   enum area:{
      "---":0,
@@ -26,10 +33,4 @@ class Mygroup < ApplicationRecord
      沖縄県:47
    }
    
-   has_many :notices, dependent: :destroy
-   has_many :plans, dependent: :destroy
-   has_many :relationships, dependent: :destroy
-   has_many :members, through: :relationships, source: :user, dependent: :destroy
-   has_many :discussions, dependent: :destroy
-   has_many :accounts, dependent: :destroy
 end

@@ -1,4 +1,5 @@
 class ContactMailer < ApplicationMailer
+  # メール送信メソッド
   default from: ENV['GMAIL_EMAIL']
   
   def signup_mail(user) #登録完了通知

@@ -1,6 +1,8 @@
 class RelationshipsController < ApplicationController
   before_action :require_user_logged_in
   
+  # Relationship ユーザーのグループへの参加(中間ﾃｰﾌﾞﾙ)
+  
   def new
     @relationship = Relationship.new
   end

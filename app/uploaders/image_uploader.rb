@@ -5,11 +5,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick   # 画像サイズ用にMiniMagick使用
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  if Rails.env.production?
+  if Rails.env.production?          # 本番環境
     storage :fog
     CarrierWave.configure do |config|
       config.fog_credentials = {
@@ -22,14 +22,14 @@ class ImageUploader < CarrierWave::Uploader::Base
       config.fog_directory     =  ENV['S3_BUCKET_KEY']
       config.fog_public = false
     end
-  else
+  else              # test,開発環境
     storage :file
   end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
+  def store_dir   # S3のディレクトリ名
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 

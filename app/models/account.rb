@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
-  belongs_to :user
-  belongs_to :mygroup
+  # Account 会計情報
+  belongs_to :user    #ユーザーは何度か支払をする
+  belongs_to :mygroup #グループには多くの支払がある
   
   validates :processed_date, presence: true
   validates :treasurer, presence: true

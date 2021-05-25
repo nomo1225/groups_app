@@ -4,6 +4,8 @@ class DiscussionsController < ApplicationController
   before_action :create_member?, only: [:edit, :update, :destroy]
   before_action :group_member?, only: [:show]
   
+  # 打合せ機能
+  
   def new
     @discussion = Discussion.new
     @mygroup_id = params[:mygroup_id]
@@ -26,7 +28,7 @@ class DiscussionsController < ApplicationController
     end
   end
 
-  def show
+  def show #opinion:意見
     @opinions = Opinion.where(discussion_id: params[:id])
   end
 

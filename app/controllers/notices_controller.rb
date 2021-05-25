@@ -4,6 +4,8 @@ class NoticesController < ApplicationController
   before_action :create_member?, only: [:edit, :update, :destroy]
   before_action :group_member?, only: [:show]
   
+  # Notice お知らせ機能
+  
   def new
     @notice = Notice.new
     @mygroup_id = params[:mygroup_id]

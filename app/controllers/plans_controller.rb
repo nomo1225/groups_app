@@ -4,6 +4,8 @@ class PlansController < ApplicationController
   before_action :create_member?, only: [:edit, :update, :destroy]
   before_action :group_member?, only: [:show]
   
+  # Plan 予定機能
+  
   def new
     @plan = Plan.new
     @mygroup_id = params[:mygroup_id]
