@@ -8,10 +8,17 @@
       <th scope="row">
         <div class="text-center nowrap">予定日時</div>
       </th>
-      <td>
-        <%= @plan.start_time.strftime("%Y-%m-%d") %>
-        / <%= @plan.plan_at.strftime("%H:%M") %>～<%= @plan.plan_until.strftime("%H:%M") %>
-      </td>
+      <% if @plan.plan_until.present? %>
+        <td>
+          <%= @plan.start_time.strftime("%Y-%m-%d") %>
+          / <%= @plan.plan_at.strftime("%H:%M") %>～<%= @plan.plan_until.strftime("%H:%M") %>
+        </td>
+      <% else %>
+        <td>
+          <%= @plan.start_time.strftime("%Y-%m-%d") %>
+          / <%= @plan.plan_at.strftime("%H:%M") %>～
+        </td>
+      <% end %>
     </tr>
     <tr>
       <th scope="row">
