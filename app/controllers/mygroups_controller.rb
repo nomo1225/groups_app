@@ -76,7 +76,7 @@ class MygroupsController < ApplicationController
   
   def members #メンバー一覧
     @user = User.find(current_user.id)
-    @relationships = @mygroup.relationships.order(created_at: :asc).page(params[:page]).per(15) #参加順に表示
+    @relationships = @mygroup.relationships.order(id: :asc).page(params[:page]).per(15) #参加順に表示
     @members = @mygroup.members
   end
   
