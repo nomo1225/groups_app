@@ -8,6 +8,7 @@
     <meta name="keywords" content="無料,グループウェア,クラブ活動,スケジュール管理,予定,音楽,友達">
     <meta name="description" content="予定・お知らせ・出欠機能などが使える無料グループウェアです。
                                       スポーツ団体や趣味のグループなどの情報共有にお使いいただけます。">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title><%= content_for?(:title) ? yield(:title) : "無料 グループウェア【Groups】活動管理(予定・出欠・会員など) 情報共有"%></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,18 +19,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Yusei+Magic&display=swap" rel="stylesheet"> 
     <link rel="apple-touch-icon" href="/assets/home-icon.jpg">
     <link rel="icon" href="/assets/home-icon.jpg" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json" />
 
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="apple-mobile-web-app-capable" content="yes"></head>
     <script data-ad-client="ca-pub-2477802141933900" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src="//maps.google.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>"></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+  
+  </head>
     
   <body>
     <%= render 'layouts/navbar' %>
