@@ -57,7 +57,7 @@ class PlansController < ApplicationController
   end
   
   def plan_params
-    params.require(:plan).permit(:title, :content, :start_time, :plan_at, :user_id, :mygroup_id, :add_title, :address)
+    params.require(:plan).permit(:title, :content, :start_time, :plan_at, :plan_until, :user_id, :mygroup_id, :add_title, :address)
   end
   
   def create_member?

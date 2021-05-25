@@ -8,7 +8,10 @@
       <th scope="row">
         <div class="text-center nowrap">予定日時</div>
       </th>
-      <td><%= @plan.start_time.strftime("%Y-%m-%d") %> / <%= @plan.plan_at.strftime("%H:%M") %>～</td>
+      <td>
+        <%= @plan.start_time.strftime("%Y-%m-%d") %>
+        / <%= @plan.plan_at.strftime("%H:%M") %>～<%= @plan.plan_until.strftime("%H:%M") %>
+      </td>
     </tr>
     <tr>
       <th scope="row">
@@ -52,7 +55,7 @@
     <% end %>
   </tbody>
 </table>
-      <% if @plan.add_title.present? %> 
+      <% if @plan.address.present? %> 
         <div class="gmap-wrap"><div id="map"></div></div>
         
           <style>

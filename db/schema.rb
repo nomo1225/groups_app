@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_042722) do
+ActiveRecord::Schema.define(version: 2021_05_25_014051) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "processed_date"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_042722) do
     t.float "latitude"
     t.float "longitude"
     t.string "add_title"
+    t.datetime "plan_until"
     t.index ["mygroup_id"], name: "index_plans_on_mygroup_id"
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
