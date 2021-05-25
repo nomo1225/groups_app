@@ -531,3 +531,10 @@ p.talk-text:last-child {
 .nowrap {
 	white-space: nowrap;
 }
+
+.clubkatsudo {
+ float: right;
+ text-align: center;
+ margin: 1rem;
+ font-size: 0.8rem;
+}
