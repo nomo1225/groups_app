@@ -234,8 +234,8 @@ html {
   height: 2.5rem;
  }
  .ft-left li {
-  margin-left: 0.625rem;
-  line-height: 2.5rem;
+  margin-left: 1rem;
+  line-height: 2rem;
  }
  .ft-right {
   display: inline;
