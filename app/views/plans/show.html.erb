@@ -103,19 +103,19 @@
           <script async defer
                   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
           </script>
-     <% end %>
+       <% end %>
 
 
 <div class="d-flex flex-column mt-2">
   <% if @plan.user_id == current_user.id %>
-    <div class="btn btn-outline-info mx-auto  btn-sm mb-1">
+    <div class="btn btn-outline-info mx-auto mb-1">
       <%= link_to '編集する', edit_plan_url(mygroup_id: @plan.mygroup.id) %>
     </div>
-    <div class="btn btn-outline-danger mx-auto  btn-sm mb-1">
+    <div class="btn btn-outline-danger mx-auto mb-1">
       <%= link_to '削除する', @plan, method: :delete, data: { confirm: '本当に削除しますか？' }%>
     </div>
   <% end %>
-  <div class="btn btn-outline-secondary mx-auto  btn-sm">
+  <div class="btn btn-outline-secondary mx-auto">
     <%= link_to '予定一覧に戻る', "/mygroups/#{@plan.mygroup_id}/plans" %>
   </div>
 </div>
