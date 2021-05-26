@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'question', to:       'toppages#question'
   get 'how_to_use', to:     'toppages#how_to_use'
   get 'omikuji', to:        'omikujis#show'
+  get 'sitemap_page', to:   'toppages#sitemap_page'
   
   get 'login', to:     'sessions#new'
   post 'login', to:    'sessions#create'
