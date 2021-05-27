@@ -19,6 +19,13 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @mygroup_id = params[:plan][:mygroup_id]
+    # 通知メール送信処理
+    @mygroup = Mygroup.find(@mygroup_id)
+    @members = @mygroup.members.where(unnotification: false)
+    mygroup = @mygroup
+    @members.each do |member|
+      ContactMailer.new_plan_mail(member, mygroup).deliver_now
+    end
     if @plan.save
       flash[:success] = '予定を登録しました。'
       #redirect_to "/mygroups/#{@plan.mygroup_id}/plans" (最初の書き方。以下に修正)

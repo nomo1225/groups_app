@@ -19,6 +19,13 @@ class NoticesController < ApplicationController
   def create
     @notice = Notice.new(notice_params)
     @mygroup_id = params[:notice][:mygroup_id]
+    # 通知メール送信処理
+    @mygroup = Mygroup.find(@mygroup_id)
+    @members = @mygroup.members.where(unnotification: false)
+    mygroup = @mygroup
+    @members.each do |member|
+      ContactMailer.new_notice_mail(member, mygroup).deliver_now
+    end
     if @notice.save
       flash[:success] = 'お知らせを登録しました。'
       redirect_to mygroup_path(@notice.mygroup_id)

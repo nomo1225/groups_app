@@ -34,6 +34,11 @@
         <%= f.file_field :image, class: 'form-control' %>
       </div>
       
+      <div class="form-group text-center">
+        <%= f.label :unnotification, '新着通知メールが不要の場合チェック' %> 
+        <%= f.check_box :unnotification, checked: false %>
+      </div>
+      
       <p>本サービスへ登録した時点で、<%= link_to'利用規約', terms_path %>に同意したものとします</p>
       <%= f.submit '利用規約に同意して登録', class: 'btn btn-primary btn-block' %>
     <% end %>

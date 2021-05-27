@@ -24,8 +24,31 @@ class ContactMailer < ApplicationMailer
     mail(to: @inquiry.email, subject: 'Groupsへのお問い合わせ')
   end
   
-  def send_for_everyone(
-    inquiry) #新規～通知メール
-    mail(to: @inquiry.email, subject: 'Groupsへのお問い合わせ')
+  def send_for_everyone(member, mygroup) #打合せ項目 新着通知メール
+    @url = "https://www.groups-app.net"
+    @member = member
+    @mygroup = mygroup
+    mail(to: @member.email, subject: 'Groups|新着通知(打合せ項目)')
+  end
+  
+  def new_notice_mail(member, mygroup) #お知らせ 新着通知メール
+    @url = "https://www.groups-app.net"
+    @member = member
+    @mygroup = mygroup
+    mail(to: @member.email, subject: 'Groups|新着通知(お知らせ)')
+  end
+  
+  def new_account_mail(member, mygroup) #会計情報 新着通知メール
+    @url = "https://www.groups-app.net"
+    @member = member
+    @mygroup = mygroup
+    mail(to: @member.email, subject: 'Groups|新着通知(会計情報)')
+  end
+  
+  def new_plan_mail(member, mygroup) #予定 新着通知メール
+    @url = "https://www.groups-app.net"
+    @member = member
+    @mygroup = mygroup
+    mail(to: @member.email, subject: 'Groups|新着通知(予定)')
   end
 end

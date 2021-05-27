@@ -20,6 +20,13 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     @mygroup_id = params[:account][:mygroup_id]
+    # 通知メール送信処理
+    @mygroup = Mygroup.find(@mygroup_id)
+    @members = @mygroup.members.where(unnotification: false)
+    mygroup = @mygroup
+    @members.each do |member|
+      ContactMailer.new_account_mail(member, mygroup).deliver_now
+    end
     if @account.save
       flash[:success] = '会計情報を登録しました。'
       redirect_to accounts_path(mygroup_id: @account.mygroup_id)

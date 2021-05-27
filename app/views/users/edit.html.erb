@@ -33,6 +33,11 @@
         <%= f.label :image, 'アイコン' %> <i class="far fa-smile"></i>
         <%= f.file_field :image, class: 'form-control' %>
       </div>
+      
+      <div class="form-group text-center">
+        <%= f.label :unnotification, '新着通知メールが不要の場合チェック' %> 
+        <%= f.check_box :unnotification %>
+      </div>
 
       <%= f.submit '保存する', class: 'btn btn-primary btn-block' %>
     <% end %>

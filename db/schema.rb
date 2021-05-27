@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_014051) do
+ActiveRecord::Schema.define(version: 2021_05_27_041914) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "processed_date"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_014051) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reset_token"
+    t.boolean "unnotification", default: false
   end
 
   create_table "weathers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

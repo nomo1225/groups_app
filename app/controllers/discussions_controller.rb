@@ -19,6 +19,14 @@ class DiscussionsController < ApplicationController
   def create
     @discussion = Discussion.new(discussion_params)
     @mygroup_id = params[:discussion][:mygroup_id]
+    
+    # 通知メール送信処理
+    @mygroup = Mygroup.find(@mygroup_id)
+    @members = @mygroup.members.where(unnotification: false)
+    mygroup = @mygroup
+    @members.each do |member|
+      ContactMailer.send_for_everyone(member, mygroup).deliver_now
+    end
     if @discussion.save
       flash[:success] = '打合せ項目を登録しました。'
       redirect_to mygroup_path(@discussion.mygroup_id)
