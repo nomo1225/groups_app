@@ -67,6 +67,7 @@ class MygroupsController < ApplicationController
   def members #メンバー一覧
     @user = User.find(current_user.id)
     @members = @mygroup.members.order(created_at: :asc).page(params[:page]).per(15) #ユーザー登録順
+    @members_count = @mygroup.members.count
   end
   
   private
