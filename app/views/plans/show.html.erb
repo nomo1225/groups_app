@@ -103,6 +103,11 @@
           <script async defer
                   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
           </script>
+          
+          <p class="text-right mr-2">ココへの行き方<i class="far fa-hand-point-right"></i>
+            <a class="btn btn-info active" href="http://maps.google.com/maps?saddr=現在地&daddr=<%= @plan.address %>&dirflg=r">Googl Mapで表示</a>
+          </p>
+          
        <% end %>
 
 

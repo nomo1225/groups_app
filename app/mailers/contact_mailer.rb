@@ -23,4 +23,9 @@ class ContactMailer < ApplicationMailer
     @inquiry = inquiry
     mail(to: @inquiry.email, subject: 'Groupsへのお問い合わせ')
   end
+  
+  def send_for_everyone(
+    inquiry) #新規～通知メール
+    mail(to: @inquiry.email, subject: 'Groupsへのお問い合わせ')
+  end
 end
