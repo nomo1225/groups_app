@@ -9,6 +9,8 @@
     <meta name="description" content="予定・お知らせ・出欠機能などが使える無料グループウェアです。
                                       スポーツ団体や趣味のグループなどの情報共有にお使いいただけます。">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--ブラウザのみにキャッシュ-->
+    <meta http-equiv="Cache-Control" content="private"> 
     <title><%= content_for?(:title) ? yield(:title) : "無料 グループウェア【Groups】活動管理(予定・出欠・会員など) 情報共有"%></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
