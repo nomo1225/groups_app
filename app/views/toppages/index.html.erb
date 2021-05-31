@@ -118,9 +118,9 @@
             <thead>
               <tr>
                 <th style="width:20%"></th>
-                <th style="width:32%">グループ名</th>
+                <th style="width:34%">グループ名</th>
                 <!--<th style="width:20%">地域</th>-->
-                <th style="width:30%">カテゴリ</th>
+                <th style="width:28%">カテゴリ</th>
                 <th style="width:18%">参加数</th>
               </tr>
             </thead>
@@ -128,7 +128,7 @@
               <tbody>
                 <tr>
                   <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
-                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(6, omission: '…'), mygroup_path(mygroup) %></td>              
+                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(7, omission: '…'), mygroup_path(mygroup) %></td>              
                   <!--<td><%#= mygroup.area %></td>-->
                   <td><%= mygroup.category.truncate(6, omission: '…') %></td>
                   <td>
@@ -145,7 +145,7 @@
                 <tbody>
                   <tr>
                     <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
-                    <td><%= link_to mygroup.name, mygroup_path(mygroup) %></td>
+                    <td><%= link_to mygroup.name.truncate(7, omission: '…'), mygroup_path(mygroup) %></td>
                     <!--<td><%#= mygroup.area %></td>-->
                     <td><%= mygroup.category.truncate(6, omission: '…') %></td>
                     <td>
