@@ -79,7 +79,7 @@
                   <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(9, omission: '…'), mygroup_path(mygroup) %></td>              
                   <!--<td><%#= mygroup.area %></td>-->
                   <td><%= mygroup.category.truncate(9, omission: '…') %></td>
-                  <td><%= @user.attends.where(mygroup_id: mygroup.id).count %>回</td>
+                  <td><%= @user.attends.where(mygroup_id: mygroup.id).where('plans.start_time > ?', Date.yesterday).count %>回</td>
                 </tr>
               </tbody>
             <% end %>
@@ -92,7 +92,7 @@
                     <td><%= link_to mygroup.name, mygroup_path(mygroup) %></td>
                     <!--<td><%#= mygroup.area %></td>-->
                     <td><%= mygroup.category.truncate(9, omission: '…') %></td>
-                    <td><%= @user.attends.where(mygroup_id: mygroup.id).count %>回</td>
+                    <td><%= @user.attends.where(mygroup_id: mygroup.id).where('plans.start_time > ?', Date.yesterday).count %>回</td>
                   </tr>
                 </tbody>
               <% end %>
@@ -134,7 +134,7 @@
                   <td><%= mygroup.category.truncate(6, omission: '…') %></td>
                   <td>
                     <div class="text-center">
-                      <%= @user.attends.where(mygroup_id: mygroup.id).count %>回
+                      <%= @user.attends.where(mygroup_id: mygroup.id).where('plans.start_time > ?', Date.yesterday).count %>回
                     </div>    
                   </td>
                 </tr>
@@ -151,7 +151,7 @@
                     <td><%= mygroup.category.truncate(6, omission: '…') %></td>
                     <td>
                       <div class="text-center">
-                        <%= @user.attends.where(mygroup_id: mygroup.id).count %>回
+                        <%= @user.attends.where(mygroup_id: mygroup.id).where('plans.start_time > ?', Date.yesterday).count %>回
                       </div>    
                     </td>
                   </tr>
