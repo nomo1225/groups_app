@@ -2,7 +2,7 @@
   <div class="row">
     <aside class="col-sm-4">
       <!--PC-->
-      <div class="card text-center  pc_area">
+      <div class="card text-center pc_area">
         <div class="card-header">
           <h3 class="card-title mx-auto"><i class="fas fa-id-card" style="color: darkorange;"></i>My Profile</h3>
         </div>
@@ -55,7 +55,7 @@
       </div>
     </aside>
     
-    <div class="col-sm-8 textsm mt-3">
+    <div class="col-sm-8 textsm mt-3 pc_area">
       <div class="card">
         <% if @made_mygroups.presence || @mygroups.presence %>
           <div class="card-header c-height">
@@ -66,8 +66,9 @@
               <tr>
                 <th style="width:20%"></th>
                 <th style="width:28%">グループ名</th>
-                <th style="width:20%">地域</th>
+                <!--<th style="width:20%">地域</th>-->
                 <th style="width:32%">カテゴリ</th>
+                <th style="width:20%">参加回数</th>
               </tr>
             </thead>
             <% @made_mygroups.each do |mygroup| %>
@@ -75,8 +76,9 @@
                 <tr>
                   <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
                   <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(9, omission: '…'), mygroup_path(mygroup) %></td>              
-                  <td><%= mygroup.area %></td>
+                  <!--<td><%#= mygroup.area %></td>-->
                   <td><%= mygroup.category.truncate(9, omission: '…') %></td>
+                  <td><%= @user.attends.where(mygroup_id: mygroup.id).count %></td>
                 </tr>
               </tbody>
             <% end %>
@@ -87,8 +89,9 @@
                   <tr>
                     <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
                     <td><%= link_to mygroup.name, mygroup_path(mygroup) %></td>
-                    <td><%= mygroup.area %></td>
-                    <td><%= mygroup.category %></td>
+                    <!--<td><%#= mygroup.area %></td>-->
+                    <td><%= mygroup.category.truncate(9, omission: '…') %></td>
+                    <td><%= @user.attends.where(mygroup_id: mygroup.id).count %></td>
                   </tr>
                 </tbody>
               <% end %>
@@ -103,10 +106,67 @@
           </div>
         <% end %>
       </div>
-      <!--<a href="https://clubkatsudo.com/" target="_blank" class="clubkatsudo">-->
-      <!--  <img src="https://clubkatsudo.com/img/banner_blue_88_31.gif" alt="クラブ活動.com" border="0" />-->
-      <!--  <p>師匠サイト<i class="far fa-hand-point-up"></i></p>-->
-      <!--</a>-->
+    </div>
+    
+    <div class="col-sm-8 textsm mt-3 phone_area">
+      <div class="card">
+        <% if @made_mygroups.presence || @mygroups.presence %>
+          <div class="card-header c-height">
+            <h5 class="card-title text-center">参加グループ一覧<span class="mg-left"><i class="far fa-flag"></i>あなたの作成したグループ</span></h5>
+          </div>
+          <table class="table table-style">
+            <thead>
+              <tr>
+                <th style="width:20%"></th>
+                <th style="width:32%">グループ名</th>
+                <!--<th style="width:20%">地域</th>-->
+                <th style="width:30%">カテゴリ</th>
+                <th style="width:18%">参加回数</th>
+              </tr>
+            </thead>
+            <% @made_mygroups.each do |mygroup| %>
+              <tbody>
+                <tr>
+                  <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
+                  <td><i class="far fa-flag"></i>&ensp; <%= link_to mygroup.name.truncate(6, omission: '…'), mygroup_path(mygroup) %></td>              
+                  <!--<td><%#= mygroup.area %></td>-->
+                  <td><%= mygroup.category.truncate(6, omission: '…') %></td>
+                  <td>
+                    <div class="text-center">
+                      <%= @user.attends.where(mygroup_id: mygroup.id).count %>
+                    </div>    
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+            
+            <% @mygroups.each do |mygroup| %>
+              <% if mygroup.user_id != current_user.id %>
+                <tbody>
+                  <tr>
+                    <td><img class="rounded img-fluid mx-auto d-block" src="<%= mygroup.image.url %>" alt="グループアイコン" width="50" height="50"></td>
+                    <td><%= link_to mygroup.name, mygroup_path(mygroup) %></td>
+                    <!--<td><%#= mygroup.area %></td>-->
+                    <td><%= mygroup.category.truncate(6, omission: '…') %></td>
+                    <td>
+                      <div class="text-center">
+                        <%= @user.attends.where(mygroup_id: mygroup.id).count %>
+                      </div>    
+                    </td>
+                  </tr>
+                </tbody>
+              <% end %>
+            <% end %>
+          <%= paginate @mygroups %>
+        </table>
+        <% else %>
+          <div class="text-center mt-2">
+            <p><i class="far fa-lightbulb" style="color:gold;"></i>【グループに参加する】ボタンからグループに参加できます。<br>
+            ※ グループ名・グループIDが必要です。<br>グループ作成者にご確認ください。</p>
+            <p><i class="far fa-lightbulb" style="color:gold;"></i>【グループを作成する】ボタンからグループを作成できます。</p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 <% else %>

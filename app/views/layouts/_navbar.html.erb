@@ -4,7 +4,7 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <% if logged_in? %>
-            <li class="nav-item  m-2">
+            <li class="nav-item m-2">
               <%= link_to logout_path, method: :delete, class: 'btn btn-outline-light' do %>
                 <i class="fas fa-door-closed"></i>ログアウト
               <% end %>
