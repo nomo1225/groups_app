@@ -102,11 +102,11 @@ html {
  left: 45px;
  font-size: 1.1rem;
 }
-/*詳細画面での背景（鳥）*/
+/*鳥ぼかし背景*/
 .bg-image {
  background:url(/about.jpg) center no-repeat; 
  background-size: contain;
- background-color: rgba(255,255,255,0.5);
+ background-color: rgba(255,255,255,0.7);
  background-blend-mode: lighten;
 }
 /*top about*/
