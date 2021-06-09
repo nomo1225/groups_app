@@ -1,24 +1,12 @@
-# README
+# Groups_app
+"Groups_app" is an information sharing app.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Features
+Share group appointments, announcements and meetings.
 
-Things you may want to cover:
+# Requirement
+ruby 2.5.3
+Rails 5.2.5
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Author
+Kohei Nomoto
